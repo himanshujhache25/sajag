@@ -1,0 +1,110 @@
+import type { Pack } from "../langs";
+import { mlHelp } from "./ml-help";
+import { mlSignals } from "./ml-signals";
+
+/* Malayalam. Machine-assisted, awaiting a native read. */
+export const ml: Pack = {
+  lang: "ml",
+  needsReview: true,
+  strings: {
+    ...mlSignals,
+    ...mlHelp,
+    "app.tagline": "നിൽക്കൂ · പരിശോധിക്കൂ · മനസ്സിലാക്കൂ",
+    "app.disclaimer":
+      "ഞങ്ങൾ നിക്ഷേപ ഉപദേശം നൽകുന്നില്ല. ഇത് SANGYAN ഹാക്കത്തോൺ മാതൃകയാണ്, SEBI യുടെയോ NSDL ന്റെയോ ഔദ്യോഗിക ആപ്പ് അല്ല.",
+    "app.skipToContent": "പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക",
+
+    "nav.back": "പിന്നോട്ട്",
+    "nav.home": "ഹോം",
+    "nav.settings": "ക്രമീകരണങ്ങൾ",
+    "nav.about": "ഞങ്ങളെക്കുറിച്ച്",
+    "nav.language": "ഭാഷ",
+
+    "common.yes": "അതെ",
+    "common.no": "അല്ല",
+    "common.dontKnow": "അറിയില്ല",
+    "common.continue": "അടുത്തത്",
+    "common.cancel": "റദ്ദാക്കുക",
+    "common.copy": "പകർത്തുക",
+    "common.copied": "പകർത്തി",
+    "common.listen": "കേൾക്കുക",
+    "common.stop": "നിർത്തുക",
+    "common.beta": "(ബീറ്റ)",
+    "common.close": "അടയ്ക്കുക",
+    "common.save": "സൂക്ഷിക്കുക",
+
+    "tab.home": "ഹോം",
+    "tab.check": "പരിശോധിക്കൂ",
+    "tab.madad": "സഹായം",
+    "tab.pause": "നിൽക്കൂ",
+    "tab.more": "കൂടുതൽ",
+
+    "home.hero": "എന്തെങ്കിലും സന്ദേശം വന്നോ?",
+    "home.heroLead": "പണമോ OTP യോ കൊടുക്കുന്നതിനു മുൻപ് ഇവിടെ പരിശോധിക്കൂ.",
+    "home.more": "വേറെ എന്തെങ്കിലും വേണോ?",
+    "home.madad": "പണം പോയോ?",
+    "home.madadLine": "ആദ്യത്തെ മണിക്കൂർ, ഇവിടെ നിന്ന് തുടങ്ങൂ",
+    "home.pause": "നിൽക്കൂ",
+    "home.pauseLine": "എന്തെങ്കിലും ചെയ്യും മുൻപ് ഒരു മിനിറ്റ്",
+    "home.traps": "തട്ടിപ്പിന്റെ പതിവു വഴികൾ",
+    "home.trapsSub": "അവ എങ്ങനെയിരിക്കും എന്ന് നോക്കൂ",
+    "home.trapSub": "ഇത് എങ്ങനെയിരിക്കും എന്ന് നോക്കൂ",
+    "home.trap1": "VIP ഗ്രൂപ്പിലേക്കുള്ള ക്ഷണം",
+    "home.trap2": "OTP ചോദിക്കൽ",
+    "home.trap3": "ഫീസ് അടച്ചാലേ പണം കിട്ടൂ",
+    "home.trap4": "ആപ്പ് ഇടാനോ സ്ക്രീൻ പങ്കിടാനോ പറയൽ",
+    "home.steps": "മൂന്ന് ചുവടുകൾ",
+    "home.step1": "സന്ദേശം ഒട്ടിക്കൂ, പറയൂ അല്ലെങ്കിൽ ഫോട്ടോ അയയ്ക്കൂ",
+    "home.step2": "ഫലവും കാരണങ്ങളും കാണൂ",
+    "home.step3": "നിന്നിട്ട് തീരുമാനിക്കൂ. വേണമെങ്കിൽ വീട്ടുകാരോട് പറയൂ.",
+    "home.lastCheck": "അവസാനത്തെ പരിശോധന",
+    "home.openCase": "നിങ്ങളുടെ കേസ് തുറന്നിരിക്കുന്നു",
+    "home.openCaseGo": "തുടരുക",
+    "home.learn": "മനസ്സിലാക്കൂ",
+    "home.family": "കുടുംബം",
+    "home.history": "പഴയ പരിശോധനകൾ",
+    "home.historyShort": "പഴയ പരിശോധനകൾ",
+    "home.tipOfDay": "ഇന്നത്തെ ഒരു കാര്യം",
+    "home.lateNight": "വലിയ തീരുമാനങ്ങൾ രാവിലെ കൂടുതൽ തെളിഞ്ഞു കാണും",
+    "home.pauseOpen": "നിൽക്കൂ തുറക്കുക",
+    "home.privacyLabel": "ഈ ഫോണിന് പുറത്തേക്ക് പോയത്",
+    "home.privacyLine": "പരിശോധന ഈ ഫോണിൽ തന്നെ. അക്കൗണ്ട് ഇല്ല. ഉപദേശം ഇല്ല.",
+    "home.privacySee": "നിങ്ങളുടെ വിവരം എവിടെ പോയി",
+    "home.sampleLink": "ഒരു മാതൃകാ സന്ദേശം നോക്കൂ",
+    "home.installAdd": "ചേർക്കുക",
+
+    "quick.placeholder": "സന്ദേശം ഇവിടെ ഒട്ടിക്കൂ…",
+    "quick.check": "സന്ദേശം പരിശോധിക്കൂ",
+    "quick.speak": "പറഞ്ഞ്",
+    "quick.photo": "ഫോട്ടോ",
+    "quick.paste": "ഒട്ടിക്കൂ",
+
+    "sample.banner": "ഇത് ഒരു മാതൃകാ സന്ദേശമാണ്",
+    "sample.own": "നിങ്ങളുടെ സ്വന്തം സന്ദേശം പരിശോധിക്കൂ",
+
+    "check.title": "നിങ്ങൾക്ക് എന്താണ് വന്നത്?",
+    "check.placeholder": "സന്ദേശം ഇവിടെ ഒട്ടിക്കൂ",
+    "check.submit": "പരിശോധിക്കൂ",
+    "check.clear": "മായ്ക്കൂ",
+
+    "state.HIGH_RISK.stamp": "അപകടം",
+    "state.MULTIPLE_RED_FLAGS.stamp": "ജാഗ്രത",
+    "state.SOME_CONCERNS.stamp": "സൂക്ഷിച്ചു നോക്കൂ",
+    "state.NO_STRONG_FLAGS.stamp": "ഉറപ്പുള്ളതൊന്നുമില്ല",
+    "state.NOT_ENOUGH_TO_GO_ON.stamp": "മതിയായില്ല",
+
+    "result.title": "ഫലം",
+    "result.whatNow": "ഇനി എന്ത് ചെയ്യണം",
+    "result.why": "എന്തുകൊണ്ട്",
+
+    "privacy.onDevice": "പരിശോധന ഈ ഫോണിൽ മാത്രമാണ് നടക്കുന്നത്",
+
+    "start.langTitle": "നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കൂ",
+    "start.promisesTitle": "മൂന്ന് വാഗ്ദാനങ്ങൾ",
+
+    "settings.title": "ക്രമീകരണങ്ങൾ",
+    "settings.language": "ഭാഷ",
+    "settings.textSize": "അക്ഷരത്തിന്റെ വലുപ്പം",
+    "settings.theme": "കാഴ്ച",
+  },
+};

@@ -1,0 +1,112 @@
+/* ============================================================================
+   Screen layout.
+
+   Home earned its rhythm the hard way: sections separated by a gap that is
+   deliberately larger than any gap inside a section, so the spacing itself
+   tells you where one idea stops. That worked, but it lived in `.home` and
+   applied to exactly one route. Every other screen went back to sprinkling
+   mt-8 / mt-20 / mt-24 down the page, which is why they read as a different
+   app — the vertical rhythm changed under your feet as you navigated.
+
+   This file lifts that rhythm out of Home so every screen can share it.
+   `.home` keeps its own two-column desktop treatment, because Home is the
+   one screen with two genuinely parallel things to show; the rest are
+   linear and are not pretending otherwise.
+
+   Same tokens throughout. No new colour, no new radius, no shadow except
+   the hard bottom edge that means "this is tappable".
+   ========================================================================== */
+
+/* -------------------------------------------------------- the column ---- */
+
+.screen {
+  --screen-gap: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--screen-gap);
+  padding-block: 1.5rem 2rem;
+}
+
+@media (min-width: 600px) {
+  .screen {
+    --screen-gap: 3rem;
+  }
+}
+
+/* A title and the line under it are one thought, so they sit close. Using
+   the section gap here would read as two separate things and is the single
+   commonest spacing mistake on these pages. */
+.screen-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.screen-head h1 {
+  /* Stops a two-word orphan on the second line, which looks like a mistake
+     at the top of a page. Matters more in Tamil and Malayalam, where words
+     are long and the heading wraps on almost every phone. */
+  text-wrap: balance;
+}
+
+/* Sections inherit the gap from the parent; this exists so a section can
+   hold its own stack without fighting the page rhythm. */
+.screen-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* The privacy line is a footnote to the whole page, not a section of it.
+   It sits a little further down and is the quietest thing on screen. */
+.screen > .privacy-line {
+  margin-top: calc(var(--screen-gap) * -1 + 1.5rem);
+}
+
+/* ------------------------------------------------------------ motion ---- */
+
+/* A short settle on arrival. Its job is to answer "did the tap work?" on a
+   slow phone, where a new screen can otherwise appear identical to the old
+   one for a moment and leave someone tapping twice.
+
+   Deliberately small and deliberately fast: 10px and 180ms. Anything longer
+   is a delay dressed up as polish, and this audience is often on a phone
+   where everything is already slow. The whole thing is cancelled by the
+   global prefers-reduced-motion block at the top of components.css.
+
+   Only the container moves. Staggering the children would be prettier and
+   would also mean the most important thing on the screen arrives last. */
+@keyframes screen-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.screen,
+.home {
+  animation: screen-in 180ms ease-out both;
+}
+
+/* ------------------------------------------------------- wide screens --- */
+
+/* A list of navigation tiles is the one thing on these screens that genuinely
+   benefits from width: the tiles are short, and stacking four of them down a
+   1440px viewport wastes the whole lower half of the window. Prose is left
+   alone — a line of text wider than about 70 characters is harder to read,
+   not easier, so the measure stays where it is.
+
+   Two columns, not three: these are decisions, and a grid of many equal
+   options is harder to choose from than a short list. */
+@media (min-width: 900px) {
+  .screen-tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-items: start;
+  }
+}

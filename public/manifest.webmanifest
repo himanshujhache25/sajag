@@ -1,0 +1,47 @@
+{
+  "name": "सजग Sajag",
+  "short_name": "Sajag",
+  "description": "Pause, check and understand an investment message on your own phone.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4EEDF",
+  "theme_color": "#F4EEDF",
+  "lang": "hi",
+  "dir": "ltr",
+  "categories": ["education", "utilities"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "share_target": {
+    "action": "/check",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "जाँचो",
+      "url": "/check"
+    },
+    {
+      "name": "पैसा चला गया?",
+      "url": "/madad"
+    }
+  ]
+}

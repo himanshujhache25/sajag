@@ -1,0 +1,29 @@
+{
+  "note": "Used only to spot lookalikes. Never shown as a recommendation. The .example entries are fictional, for tests.",
+  "official": [
+    "sebi.gov.in",
+    "scores.sebi.gov.in",
+    "investor.sebi.gov.in",
+    "siportal.sebi.gov.in",
+    "mi.sebi.gov.in",
+    "cybercrime.gov.in",
+    "sancharsaathi.gov.in",
+    "rbi.org.in",
+    "bhashini.gov.in"
+  ],
+  "exchange": ["nseindia.com", "bseindia.com", "mcxindia.com"],
+  "depository": ["nsdl.co.in", "cdslindia.com", "nsdl.com"],
+  "amc": ["amfiindia.com"],
+  "brandTokens": [
+    "sebi",
+    "nse",
+    "bse",
+    "nsdl",
+    "cdsl",
+    "rbi",
+    "amfi",
+    "scores",
+    "mcx"
+  ],
+  "demo": ["demobroker.example", "demofund.example", "demodepository.example"]
+}

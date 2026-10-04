@@ -1,0 +1,306 @@
+/* ============================================================================
+   Home.
+
+   Everything here exists only on `/`. It is kept out of components.css
+   because none of it is a general-purpose part: a quick-entry card that
+   cannot be typed into, a row that shows what a scam looks like, and a
+   single line recalling the last check.
+
+   All of it is built from the same tokens as the rest of the app. No new
+   colour, no new radius, no shadow except the hard bottom edge that means
+   "this is tappable".
+   ========================================================================== */
+
+/* ------------------------------------------------------ home layout ----- */
+
+/* Home sets its own rhythm rather than sprinkling mt-24 and mt-32 down the
+   page. Four sections, and the space between them is what tells someone
+   where one idea stops and the next begins — so the gap between sections is
+   deliberately larger than any gap inside one. That single ratio is most of
+   the hierarchy on this screen. */
+.home {
+  --home-gap: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--home-gap);
+  padding-block: 1.5rem 2rem;
+}
+
+@media (min-width: 600px) {
+  .home {
+    --home-gap: 3rem;
+  }
+}
+
+/* The priority note belongs to the hero, not to the page: it is the same
+   thought one beat earlier, so it sits closer than a section gap. */
+.home-priority + .home-hero {
+  margin-top: calc(var(--home-gap) * -1 + 1rem);
+}
+
+.home-hero h1 {
+  text-wrap: balance;
+}
+
+/* The hero and the action are one unit — the question and the way to answer
+   it — so they sit nearer each other than either sits to the doors. */
+.home-hero + .home-action {
+  margin-top: calc(var(--home-gap) * -1 + 1.25rem);
+}
+
+.home-action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* The privacy promise, reduced from a panel with a byte counter to one
+   quiet line. It is deliberately the smallest text on the screen: it has to
+   be present to be trusted, and absent to not compete with the button. */
+.home-proof {
+  font-size: var(--t-caption);
+  color: var(--ink-3);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* ------------------------------------------------- desktop two-column --- */
+
+/* On a wide screen the old page ran one 560px column down the middle and
+   left 460px of the viewport empty on each side, which is a phone emulator
+   rather than a web page. The hero and its action take the left, the doors
+   take the right, and both are read before any scrolling.
+
+   This is a Home-only rule. The rest of the app is genuinely linear and
+   reads correctly in a single column. */
+@media (min-width: 900px) {
+  .home {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    column-gap: 3.5rem;
+    align-items: start;
+  }
+  .home-priority {
+    grid-column: 1 / -1;
+  }
+  .home-hero,
+  .home-action {
+    grid-column: 1;
+  }
+  .home-doors,
+  .home-last {
+    grid-column: 2;
+  }
+  /* The negative pull-ups above are a single-column device. In two columns
+     each item starts its own row and the grid gap does the spacing. */
+  .home-priority + .home-hero,
+  .home-hero + .home-action {
+    margin-top: 0;
+  }
+  .home-doors {
+    /* Optically level with the h1 rather than the top of its own label. */
+    margin-top: 0.5rem;
+  }
+  .home-proof {
+    text-align: start;
+  }
+}
+
+/* ------------------------------------------------- quick entry card ----- */
+
+/* A sheet of ruled paper with a button under it. It is not a textarea: the
+   real composer lives on /check and owns the text. Showing a dead one here
+   would mean two places that hold a half-typed message and a choice about
+   which one wins. This is a door that looks like the room behind it. */
+.quick-card {
+  display: block;
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.quick-surface {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  min-height: 7rem;
+  padding: 8px 16px 8px 40px;
+  font-size: var(--t-body);
+  line-height: 2rem;
+  color: var(--ink-3);
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(2rem - 1px),
+      var(--rule) calc(2rem - 1px),
+      var(--rule) 2rem
+    ),
+    linear-gradient(
+      to right,
+      transparent 28px,
+      var(--margin) 28px,
+      var(--margin) 29.5px,
+      transparent 29.5px
+    );
+  background-position: 0 8px, 0 0;
+}
+
+.quick-surface:active {
+  background-color: var(--sunken);
+}
+
+/* The paste button sits on the paper, at the end of the first rule, where a
+   thumb already is. It is a sibling of the link rather than a child, because
+   a button inside a link is a broken control in every screen reader. */
+.quick-paste {
+  position: absolute;
+  inset-inline-end: 12px;
+  inset-block-end: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  /* 52px, the floor SPEC 11.1 sets. This button sits on the home screen's
+     largest tile and is the first thing a returning person reaches for. */
+  min-height: 52px;
+  padding: 0 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-bottom-width: 3px;
+  border-radius: var(--r-sm);
+}
+
+.quick-paste:active {
+  border-bottom-width: 1.5px;
+  transform: translateY(1.5px);
+  background: var(--sunken);
+}
+
+/* Speak and Photo, side by side under the main button. At 150 percent text
+   two words no longer fit beside each other, so they stack rather than
+   truncate: a label that reads "Phot…" helps nobody. */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 359px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------ pattern row ----- */
+
+/* "This is what a VIP group invite looks like." A row, not a card, so four
+   of them read as one list instead of four competing offers. */
+.pattern-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 12px 16px;
+  text-align: start;
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-bottom-width: 3px;
+  border-radius: var(--r-md);
+}
+
+.pattern-row:active {
+  border-bottom-width: 1.5px;
+  transform: translateY(1.5px);
+}
+
+.pattern-plate {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  color: var(--danger);
+  background: var(--danger-tint);
+  border: 1px solid var(--danger);
+  border-radius: var(--r-sm);
+}
+
+.pattern-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ------------------------------------------------------- last check ----- */
+
+/* One line that says what was checked last and how it came out. It replaces
+   the "three steps" panel once there is a real check to show, because the
+   instructions stop being news after the first time. */
+.last-check {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 12px 16px;
+  text-align: start;
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-bottom-width: 3px;
+  border-radius: var(--r-md);
+}
+
+.last-check:active {
+  border-bottom-width: 1.5px;
+  transform: translateY(1.5px);
+}
+
+/* A stamp shrunk to a plate. The word is the verdict in one word, so the
+   row is readable without opening it. */
+.last-check-plate {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+  border: 1.5px solid currentColor;
+  border-radius: var(--r-sm);
+}
+
+.last-check-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Two lines at most, then an ellipsis. A pasted scam message is often three
+   hundred words and the row is not the place to read them. */
+.last-check-msg {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------- privacy panel ----- */
+
+/* The running total of what has left the phone. It is a number, not a
+   promise, and it is nearly always zero. On the desktop the rail carries
+   it, so the page hides it rather than saying it twice. */
+.privacy-panel {
+  padding: 16px 20px;
+}
+
+@media (min-width: 1024px) {
+  .privacy-panel {
+    display: none;
+  }
+}

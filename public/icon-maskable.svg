@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" fill="#F4EEDF"/>
+  <g transform="rotate(-6 96 96)">
+    <rect x="58" y="72" width="76" height="50" fill="none" stroke="#A3241D" stroke-width="6"/>
+    <text x="96" y="105" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#A3241D" text-anchor="middle">SAJAG</text>
+  </g>
+</svg>

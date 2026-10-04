@@ -1,0 +1,110 @@
+import type { Pack } from "../langs";
+import { guHelp } from "./gu-help";
+import { guSignals } from "./gu-signals";
+
+/* Gujarati. Machine-assisted, awaiting a native read. */
+export const gu: Pack = {
+  lang: "gu",
+  needsReview: true,
+  strings: {
+    ...guSignals,
+    ...guHelp,
+    "app.tagline": "થોભો · તપાસો · સમજો",
+    "app.disclaimer":
+      "અમે રોકાણની સલાહ આપતા નથી. આ SANGYAN હેકાથોનનો પ્રોટોટાઇપ છે, SEBI કે NSDL ની અધિકૃત એપ નથી.",
+    "app.skipToContent": "મુખ્ય લખાણ પર જાઓ",
+
+    "nav.back": "પાછા",
+    "nav.home": "હોમ",
+    "nav.settings": "સેટિંગ્સ",
+    "nav.about": "અમારા વિશે",
+    "nav.language": "ભાષા",
+
+    "common.yes": "હા",
+    "common.no": "ના",
+    "common.dontKnow": "ખબર નથી",
+    "common.continue": "આગળ",
+    "common.cancel": "રદ કરો",
+    "common.copy": "કૉપી કરો",
+    "common.copied": "કૉપી થયું",
+    "common.listen": "સાંભળો",
+    "common.stop": "બંધ કરો",
+    "common.beta": "(બીટા)",
+    "common.close": "બંધ",
+    "common.save": "સાચવો",
+
+    "tab.home": "હોમ",
+    "tab.check": "તપાસો",
+    "tab.madad": "મદદ",
+    "tab.pause": "થોભો",
+    "tab.more": "વધુ",
+
+    "home.hero": "કોઈ મેસેજ આવ્યો છે?",
+    "home.heroLead": "પૈસા કે OTP આપતા પહેલાં અહીં તપાસી લો.",
+    "home.more": "બીજું કંઈ જોઈએ છે?",
+    "home.madad": "પૈસા જતા રહ્યા?",
+    "home.madadLine": "પહેલો કલાક, અહીંથી જ શરૂ કરો",
+    "home.pause": "થોભો",
+    "home.pauseLine": "કંઈ કરતા પહેલાં એક મિનિટ",
+    "home.traps": "છેતરપિંડીની સામાન્ય રીતો",
+    "home.trapsSub": "તે કેવી દેખાય છે તે જુઓ",
+    "home.trapSub": "આ કેવું દેખાય છે તે જુઓ",
+    "home.trap1": "VIP ગ્રુપનું આમંત્રણ",
+    "home.trap2": "OTP માગવો",
+    "home.trap3": "ફી ભરો, તો જ પૈસા મળશે",
+    "home.trap4": "એપ નાખવાનું કે સ્ક્રીન શેર કરવાનું કહેવું",
+    "home.steps": "ત્રણ પગલાં",
+    "home.step1": "મેસેજ ચોંટાડો, બોલો કે ફોટો મોકલો",
+    "home.step2": "પરિણામ અને કારણો જુઓ",
+    "home.step3": "થોભીને નક્કી કરો. ઇચ્છો તો ઘરનાને જણાવો.",
+    "home.lastCheck": "છેલ્લી તપાસ",
+    "home.openCase": "તમારો કેસ ખુલ્લો છે",
+    "home.openCaseGo": "ચાલુ રાખો",
+    "home.learn": "સમજો",
+    "home.family": "પરિવાર",
+    "home.history": "જૂની તપાસ",
+    "home.historyShort": "જૂની તપાસ",
+    "home.tipOfDay": "આજની એક વાત",
+    "home.lateNight": "મોટા નિર્ણય સવારે વધુ સ્પષ્ટ લાગે છે",
+    "home.pauseOpen": "થોભો ખોલો",
+    "home.privacyLabel": "આ ફોનની બહાર ગયું",
+    "home.privacyLine": "તપાસ આ જ ફોન પર. કોઈ ખાતું નહીં. કોઈ સલાહ નહીં.",
+    "home.privacySee": "તમારો ડેટા ક્યાં ગયો",
+    "home.sampleLink": "કોઈ નમૂના મેસેજ અજમાવો",
+    "home.installAdd": "ઉમેરો",
+
+    "quick.placeholder": "અહીં મેસેજ ચોંટાડો…",
+    "quick.check": "મેસેજ તપાસો",
+    "quick.speak": "બોલીને",
+    "quick.photo": "ફોટો",
+    "quick.paste": "ચોંટાડો",
+
+    "sample.banner": "આ એક નમૂનો મેસેજ છે",
+    "sample.own": "તમારો પોતાનો મેસેજ તપાસો",
+
+    "check.title": "તમારી પાસે શું આવ્યું છે?",
+    "check.placeholder": "અહીં મેસેજ ચોંટાડો",
+    "check.submit": "તપાસો",
+    "check.clear": "ભૂંસો",
+
+    "state.HIGH_RISK.stamp": "ભય",
+    "state.MULTIPLE_RED_FLAGS.stamp": "સાવધાન",
+    "state.SOME_CONCERNS.stamp": "ધ્યાનથી જુઓ",
+    "state.NO_STRONG_FLAGS.stamp": "નક્કર કશું નહીં",
+    "state.NOT_ENOUGH_TO_GO_ON.stamp": "પૂરતું નથી",
+
+    "result.title": "પરિણામ",
+    "result.whatNow": "હવે શું કરવું",
+    "result.why": "શા માટે",
+
+    "privacy.onDevice": "તપાસ ફક્ત આ ફોન પર થાય છે",
+
+    "start.langTitle": "તમારી ભાષા પસંદ કરો",
+    "start.promisesTitle": "ત્રણ વચન",
+
+    "settings.title": "સેટિંગ્સ",
+    "settings.language": "ભાષા",
+    "settings.textSize": "અક્ષરનું કદ",
+    "settings.theme": "દેખાવ",
+  },
+};

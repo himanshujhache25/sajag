@@ -1,0 +1,276 @@
+{
+  "note": "Fictional records for the hackathon demo. Every entry carries demo: true and the UI shows a 'demo data' tag wherever they are used. Real data comes from scripts/build-registry.ts, which reads a CSV a person exports from SEBI's official list.",
+  "snapshotDate": "2026-09-28",
+  "entities": [
+    {
+      "regNo": "INH000111222",
+      "name": "Gorakhpur Research Analytics",
+      "category": "INH",
+      "city": "Gorakhpur",
+      "status": "registered",
+      "validTill": "2028-03-31",
+      "demo": true
+    },
+    {
+      "regNo": "INA000333444",
+      "name": "Satna Wealth Advisers Pvt Ltd",
+      "category": "INA",
+      "city": "Satna",
+      "status": "registered",
+      "validTill": "2027-12-31",
+      "demo": true
+    },
+    {
+      "regNo": "INZ000555666",
+      "name": "Jhansi Broking Services Limited",
+      "category": "INZ",
+      "city": "Jhansi",
+      "status": "registered",
+      "validTill": "2029-06-30",
+      "demo": true
+    },
+    {
+      "regNo": "INZ000555777",
+      "name": "Imran Ansari Securities",
+      "category": "INZ",
+      "city": "Bhopal",
+      "status": "registered",
+      "validTill": "2028-09-30",
+      "demo": true
+    },
+    {
+      "regNo": "INP000777888",
+      "name": "Varanasi Portfolio Managers LLP",
+      "category": "INP",
+      "city": "Varanasi",
+      "status": "registered",
+      "validTill": "2027-06-30",
+      "demo": true
+    },
+    {
+      "regNo": "INM000999000",
+      "name": "Prayagraj Merchant Banking Pvt Ltd",
+      "category": "INM",
+      "city": "Prayagraj",
+      "status": "registered",
+      "validTill": "2028-01-31",
+      "demo": true
+    },
+    {
+      "regNo": "IN-DP-321-2019",
+      "name": "Kanpur Depository Services",
+      "category": "IN-DP",
+      "city": "Kanpur",
+      "status": "registered",
+      "validTill": "2030-03-31",
+      "demo": true
+    },
+    {
+      "regNo": "INH000222333",
+      "name": "Rewa Equity Research",
+      "category": "INH",
+      "city": "Rewa",
+      "status": "suspended",
+      "validTill": "2026-03-31",
+      "demo": true
+    },
+    {
+      "regNo": "INA000444555",
+      "name": "Mirzapur Investment Advisers",
+      "category": "INA",
+      "city": "Mirzapur",
+      "status": "expired",
+      "validTill": "2025-03-31",
+      "demo": true
+    },
+    {
+      "regNo": "INZ000666777",
+      "name": "Ballia Stock Broking Pvt Ltd",
+      "category": "INZ",
+      "city": "Ballia",
+      "status": "registered",
+      "validTill": "2028-11-30",
+      "demo": true
+    },
+    {
+      "regNo": "INH000333555",
+      "name": "Deoria Market Research Services",
+      "category": "INH",
+      "city": "Deoria",
+      "status": "registered",
+      "validTill": "2027-08-31",
+      "demo": true
+    },
+    {
+      "regNo": "INA000555666",
+      "name": "Azamgarh Financial Advisers LLP",
+      "category": "INA",
+      "city": "Azamgarh",
+      "status": "registered",
+      "validTill": "2029-02-28",
+      "demo": true
+    },
+    {
+      "regNo": "INZ000777999",
+      "name": "Chhapra Capital Markets Limited",
+      "category": "INZ",
+      "city": "Chhapra",
+      "status": "registered",
+      "validTill": "2028-07-31",
+      "demo": true
+    },
+    {
+      "regNo": "INH000444666",
+      "name": "Sultanpur Research Advisors",
+      "category": "INH",
+      "city": "Sultanpur",
+      "status": "registered",
+      "validTill": "2027-10-31",
+      "demo": true
+    },
+    {
+      "regNo": "INP000888999",
+      "name": "Lucknow Wealth Portfolio Services",
+      "category": "INP",
+      "city": "Lucknow",
+      "status": "registered",
+      "validTill": "2028-05-31",
+      "demo": true
+    },
+    {
+      "regNo": "INZ000111333",
+      "name": "Patna Broking House Pvt Ltd",
+      "category": "INZ",
+      "city": "Patna",
+      "status": "registered",
+      "validTill": "2029-01-31",
+      "demo": true
+    },
+    {
+      "regNo": "INA000666777",
+      "name": "Nagpur Investment Advisory Services",
+      "category": "INA",
+      "city": "Nagpur",
+      "status": "registered",
+      "validTill": "2027-04-30",
+      "demo": true
+    },
+    {
+      "regNo": "INH000555777",
+      "name": "Indore Equity Analysts",
+      "category": "INH",
+      "city": "Indore",
+      "status": "suspended",
+      "validTill": "2027-09-30",
+      "demo": true
+    },
+    {
+      "regNo": "INZ000222444",
+      "name": "Raipur Securities and Broking",
+      "category": "INZ",
+      "city": "Raipur",
+      "status": "registered",
+      "validTill": "2028-12-31",
+      "demo": true
+    },
+    {
+      "regNo": "INM000111222",
+      "name": "Bhubaneswar Merchant Bankers Limited",
+      "category": "INM",
+      "city": "Bhubaneswar",
+      "status": "registered",
+      "validTill": "2027-11-30",
+      "demo": true
+    },
+    {
+      "regNo": "IN-DP-654-2021",
+      "name": "Ranchi Depository Participant Services",
+      "category": "IN-DP",
+      "city": "Ranchi",
+      "status": "registered",
+      "validTill": "2030-09-30",
+      "demo": true
+    },
+    {
+      "regNo": "INA000777888",
+      "name": "Jaipur Financial Planning Advisers",
+      "category": "INA",
+      "city": "Jaipur",
+      "status": "registered",
+      "validTill": "2028-08-31",
+      "demo": true
+    },
+    {
+      "regNo": "INH000666888",
+      "name": "Surat Research and Analytics LLP",
+      "category": "INH",
+      "city": "Surat",
+      "status": "registered",
+      "validTill": "2029-03-31",
+      "demo": true
+    },
+    {
+      "regNo": "INZ000333555",
+      "name": "Coimbatore Broking Private Limited",
+      "category": "INZ",
+      "city": "Coimbatore",
+      "status": "registered",
+      "validTill": "2028-02-29",
+      "demo": true
+    },
+    {
+      "regNo": "INA000888999",
+      "name": "Vijayawada Wealth Advisers",
+      "category": "INA",
+      "city": "Vijayawada",
+      "status": "expired",
+      "validTill": "2024-12-31",
+      "demo": true
+    },
+    {
+      "regNo": "INP000222333",
+      "name": "Pune Portfolio Managers Pvt Ltd",
+      "category": "INP",
+      "city": "Pune",
+      "status": "registered",
+      "validTill": "2027-07-31",
+      "demo": true
+    },
+    {
+      "regNo": "INH000777999",
+      "name": "Guwahati Market Research",
+      "category": "INH",
+      "city": "Guwahati",
+      "status": "registered",
+      "validTill": "2028-10-31",
+      "demo": true
+    },
+    {
+      "regNo": "INZ000444666",
+      "name": "Kochi Securities Broking LLP",
+      "category": "INZ",
+      "city": "Kochi",
+      "status": "registered",
+      "validTill": "2029-05-31",
+      "demo": true
+    },
+    {
+      "regNo": "INA000999111",
+      "name": "Ludhiana Investment Advisers Pvt Ltd",
+      "category": "INA",
+      "city": "Ludhiana",
+      "status": "registered",
+      "validTill": "2027-05-31",
+      "demo": true
+    },
+    {
+      "regNo": "INH000888222",
+      "name": "Nashik Research Analysts LLP",
+      "category": "INH",
+      "city": "Nashik",
+      "status": "registered",
+      "validTill": "2028-06-30",
+      "demo": true
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+import type { Pack } from "../langs";
+import { orHelp } from "./or-help";
+import { orSignals } from "./or-signals";
+
+/* Odia. Machine-assisted, awaiting a native read. */
+export const or: Pack = {
+  lang: "or",
+  needsReview: true,
+  strings: {
+    ...orSignals,
+    ...orHelp,
+    "app.tagline": "ରୁହନ୍ତୁ · ଯାଞ୍ଚ କରନ୍ତୁ · ବୁଝନ୍ତୁ",
+    "app.disclaimer":
+      "ଆମେ ନିବେଶ ପରାମର୍ଶ ଦେଉନାହୁଁ। ଏହା SANGYAN ହ୍ୟାକାଥନର ଏକ ପ୍ରୋଟୋଟାଇପ, SEBI କିମ୍ବା NSDL ର ସରକାରୀ ଆପ ନୁହେଁ।",
+    "app.skipToContent": "ମୁଖ୍ୟ ବିଷୟକୁ ଯାଆନ୍ତୁ",
+
+    "nav.back": "ପଛକୁ",
+    "nav.home": "ହୋମ",
+    "nav.settings": "ସେଟିଂସ",
+    "nav.about": "ଆମ ବିଷୟରେ",
+    "nav.language": "ଭାଷା",
+
+    "common.yes": "ହଁ",
+    "common.no": "ନା",
+    "common.dontKnow": "ଜଣା ନାହିଁ",
+    "common.continue": "ପରବର୍ତ୍ତୀ",
+    "common.cancel": "ବାତିଲ",
+    "common.copy": "କପି କରନ୍ତୁ",
+    "common.copied": "କପି ହେଲା",
+    "common.listen": "ଶୁଣନ୍ତୁ",
+    "common.stop": "ବନ୍ଦ କରନ୍ତୁ",
+    "common.beta": "(ବିଟା)",
+    "common.close": "ବନ୍ଦ",
+    "common.save": "ରଖନ୍ତୁ",
+
+    "tab.home": "ହୋମ",
+    "tab.check": "ଯାଞ୍ଚ",
+    "tab.madad": "ସହାୟତା",
+    "tab.pause": "ରୁହନ୍ତୁ",
+    "tab.more": "ଅଧିକ",
+
+    "home.hero": "କୌଣସି ମେସେଜ ଆସିଛି କି?",
+    "home.heroLead": "ଟଙ୍କା କିମ୍ବା OTP ଦେବା ପୂର୍ବରୁ ଏଠାରେ ଯାଞ୍ଚ କରିନିଅନ୍ତୁ।",
+    "home.more": "ଆଉ କିଛି ଦରକାର?",
+    "home.madad": "ଟଙ୍କା ଚାଲିଗଲା କି?",
+    "home.madadLine": "ପ୍ରଥମ ଘଣ୍ଟା, ଏଠାରୁ ହିଁ ଆରମ୍ଭ କରନ୍ତୁ",
+    "home.pause": "ରୁହନ୍ତୁ",
+    "home.pauseLine": "କିଛି କରିବା ପୂର୍ବରୁ ଏକ ମିନିଟ",
+    "home.traps": "ଠକେଇର ସାଧାରଣ ଉପାୟ",
+    "home.trapsSub": "ସେଗୁଡ଼ିକ କେମିତି ଦେଖାଯାଏ ଦେଖନ୍ତୁ",
+    "home.trapSub": "ଏହା କେମିତି ଦେଖାଯାଏ ଦେଖନ୍ତୁ",
+    "home.trap1": "VIP ଗ୍ରୁପକୁ ନିମନ୍ତ୍ରଣ",
+    "home.trap2": "OTP ମାଗିବା",
+    "home.trap3": "ଫିସ ଦେଲେ ହିଁ ଟଙ୍କା ମିଳିବ",
+    "home.trap4": "ଆପ ଲଗାଇବାକୁ କିମ୍ବା ସ୍କ୍ରିନ ସେୟାର କରିବାକୁ କହିବା",
+    "home.steps": "ତିନି ପାହାଚ",
+    "home.step1": "ମେସେଜ ପେଷ୍ଟ କରନ୍ତୁ, କୁହନ୍ତୁ କିମ୍ବା ଫଟୋ ପଠାନ୍ତୁ",
+    "home.step2": "ଫଳାଫଳ ଓ କାରଣ ଦେଖନ୍ତୁ",
+    "home.step3": "ରହି ନିଷ୍ପତ୍ତି ନିଅନ୍ତୁ। ଚାହିଁଲେ ପରିବାରକୁ କୁହନ୍ତୁ।",
+    "home.lastCheck": "ଶେଷ ଯାଞ୍ଚ",
+    "home.openCase": "ଆପଣଙ୍କ ମାମଲା ଖୋଲା ଅଛି",
+    "home.openCaseGo": "ଜାରି ରଖନ୍ତୁ",
+    "home.learn": "ବୁଝନ୍ତୁ",
+    "home.family": "ପରିବାର",
+    "home.history": "ପୁରୁଣା ଯାଞ୍ଚ",
+    "home.historyShort": "ପୁରୁଣା ଯାଞ୍ଚ",
+    "home.tipOfDay": "ଆଜିର ଗୋଟିଏ କଥା",
+    "home.lateNight": "ବଡ଼ ନିଷ୍ପତ୍ତି ସକାଳେ ଅଧିକ ସ୍ପଷ୍ଟ ଲାଗେ",
+    "home.pauseOpen": "ରୁହନ୍ତୁ ଖୋଲନ୍ତୁ",
+    "home.privacyLabel": "ଏହି ଫୋନ ବାହାରକୁ ଗଲା",
+    "home.privacyLine": "ଯାଞ୍ଚ ଏହି ଫୋନରେ ହିଁ। କୌଣସି ଖାତା ନାହିଁ। କୌଣସି ପରାମର୍ଶ ନାହିଁ।",
+    "home.privacySee": "ଆପଣଙ୍କ ତଥ୍ୟ କେଉଁଠି ଗଲା",
+    "home.sampleLink": "ଗୋଟିଏ ନମୁନା ମେସେଜ ଦେଖନ୍ତୁ",
+    "home.installAdd": "ଯୋଡ଼ନ୍ତୁ",
+
+    "quick.placeholder": "ମେସେଜ ଏଠାରେ ପେଷ୍ଟ କରନ୍ତୁ…",
+    "quick.check": "ମେସେଜ ଯାଞ୍ଚ କରନ୍ତୁ",
+    "quick.speak": "କହି",
+    "quick.photo": "ଫଟୋ",
+    "quick.paste": "ପେଷ୍ଟ",
+
+    "sample.banner": "ଏହା ଗୋଟିଏ ନମୁନା ମେସେଜ",
+    "sample.own": "ନିଜର ମେସେଜ ଯାଞ୍ଚ କରନ୍ତୁ",
+
+    "check.title": "ଆପଣଙ୍କ ପାଖକୁ କଣ ଆସିଛି?",
+    "check.placeholder": "ମେସେଜ ଏଠାରେ ପେଷ୍ଟ କରନ୍ତୁ",
+    "check.submit": "ଯାଞ୍ଚ କରନ୍ତୁ",
+    "check.clear": "ଲିଭାନ୍ତୁ",
+
+    "state.HIGH_RISK.stamp": "ବିପଦ",
+    "state.MULTIPLE_RED_FLAGS.stamp": "ସାବଧାନ",
+    "state.SOME_CONCERNS.stamp": "ଭଲ ଭାବେ ଦେଖନ୍ତୁ",
+    "state.NO_STRONG_FLAGS.stamp": "ଦୃଢ଼ କିଛି ମିଳିଲା ନାହିଁ",
+    "state.NOT_ENOUGH_TO_GO_ON.stamp": "ଯଥେଷ୍ଟ ନୁହେଁ",
+
+    "result.title": "ଫଳାଫଳ",
+    "result.whatNow": "ବର୍ତ୍ତମାନ କଣ କରିବେ",
+    "result.why": "କାହିଁକି",
+
+    "privacy.onDevice": "ଯାଞ୍ଚ କେବଳ ଏହି ଫୋନରେ ହୁଏ",
+
+    "start.langTitle": "ଆପଣଙ୍କ ଭାଷା ବାଛନ୍ତୁ",
+    "start.promisesTitle": "ତିନୋଟି ପ୍ରତିଶ୍ରୁତି",
+
+    "settings.title": "ସେଟିଂସ",
+    "settings.language": "ଭାଷା",
+    "settings.textSize": "ଅକ୍ଷରର ଆକାର",
+    "settings.theme": "ରୂପ",
+  },
+};

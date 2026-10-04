@@ -1,0 +1,2108 @@
+/* ============================================================================
+   Component styles. Section 4 of docs/UI_SPEC.md.
+   The rule that drives the whole sheet: anything tappable has a 1.5px --edge
+   border and a 3px hard bottom edge ("a key you can press"); anything static
+   has no hard edge. There are no blurred shadows anywhere in the app.
+   ========================================================================== */
+
+/* Motion in this app is only ever used to say "this changed" or "this is the
+   one you asked for" — never for decoration. Someone who has asked their
+   phone to stop moving things gets the same interface, instantly, with every
+   state still legible from colour and shape alone. This block sits first so
+   nothing further down can escape it. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===================================================== layout / shell ==== */
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+  background: var(--page);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.page-pad {
+  padding-inline: 20px;
+}
+
+@media (max-width: 339px) {
+  .page-pad {
+    padding-inline: 16px;
+  }
+}
+
+@media (min-width: 480px) {
+  .page-pad {
+    padding-inline: 24px;
+  }
+}
+
+.shell-main {
+  flex: 1;
+  /* The tab bar is sticky, so it floats over this region while the page
+     scrolls. With a flat 32px the last control on a long screen sat under
+     the bar and could not be scrolled clear of it. Reserving the bar's own
+     height means every row can reach open space. */
+  padding-bottom: calc(var(--h-tab) + 32px);
+}
+
+/* Hidden until focused. Clipped to nothing rather than parked at
+   `left: -9999px`: in Urdu, where the page runs right to left, a negative
+   left offset is *inside* the scrollable area, so the old trick gave the
+   document a ten-thousand-pixel horizontal scroll and pushed every control
+   off screen. Clipping takes the link out of the flow in both directions. */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skip-link:focus {
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  padding: 12px 20px;
+  background: var(--action);
+  color: var(--action-fg);
+  font-weight: 600;
+}
+
+/* Vertical rhythm. Only these gaps exist. */
+.stack-8 > * + * {
+  margin-top: 8px;
+}
+.stack-12 > * + * {
+  margin-top: 12px;
+}
+.stack-16 > * + * {
+  margin-top: 16px;
+}
+.stack-20 > * + * {
+  margin-top: 20px;
+}
+.stack-24 > * + * {
+  margin-top: 24px;
+}
+.stack-32 > * + * {
+  margin-top: 32px;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+.mt-12 {
+  margin-top: 12px;
+}
+.mt-16 {
+  margin-top: 16px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.mt-24 {
+  margin-top: 24px;
+}
+.mt-32 {
+  margin-top: 32px;
+}
+
+/* ============================================================ header ==== */
+
+.app-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* At 150% text on a 320px screen the wordmark and the two controls cannot
+     share one line. Wrapping is the honest answer: the page never slides
+     sideways, and the controls simply drop under the name. */
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 20px;
+  padding-top: calc(12px + env(safe-area-inset-top));
+  background: var(--page);
+}
+
+.header-brand {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.header-tools {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--ui-serif);
+  font-size: var(--t-h1);
+  line-height: 1;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* The only mark the app has: a full stop that is also a bindi. */
+.wordmark-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--danger);
+  flex: none;
+}
+
+.tagline {
+  margin-top: 4px;
+  font-size: var(--t-caption);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+/* Two lines, 3px apart: the top of a ledger page. */
+.double-rule {
+  border-top: 1.5px solid var(--edge);
+  border-bottom: 1.5px solid var(--edge);
+  height: 4.5px;
+  box-sizing: content-box;
+  flex: none;
+}
+
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 3.5rem;
+  padding: 0 20px;
+  padding-top: env(safe-area-inset-top);
+  border-bottom: 1px solid var(--rule);
+  background: var(--page);
+}
+
+/* ============================================================ button ==== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: var(--h-btn);
+  padding: 0 24px;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--edge);
+  font-size: var(--t-button);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 90ms ease-out, box-shadow 90ms ease-out,
+    background-color 120ms ease-out;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(2px);
+}
+
+.btn-primary {
+  background: var(--action);
+  color: var(--action-fg);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--action) 80%, #000);
+}
+.btn-primary:active:not(:disabled) {
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--action) 80%, #000);
+}
+
+.btn-secondary {
+  min-height: var(--h-target);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 3px 0 var(--edge);
+}
+.btn-secondary:active:not(:disabled) {
+  box-shadow: 0 1px 0 var(--edge);
+}
+
+.btn-emergency {
+  min-height: var(--h-btn-emergency);
+  background: var(--danger-fill);
+  color: var(--danger-fg);
+  border-color: var(--edge);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--danger-fill) 75%, #000);
+}
+.btn-emergency:active:not(:disabled) {
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--danger-fill) 75%, #000);
+}
+
+.btn-text {
+  min-height: 3rem;
+  /* A short label like "रद्द" is only 46px wide, and a borderless button
+     gives the thumb no edge to aim at. 52px in both directions, per
+     SPEC 11.1, so the target matches the promise rather than the text. */
+  min-width: 52px;
+  padding: 0 8px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  color: var(--action);
+}
+.btn-text:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn-md {
+  min-height: var(--h-target);
+  padding: 0 16px;
+  font-size: var(--t-small);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  background: var(--sunken);
+  color: var(--ink-3);
+  border-color: var(--border);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (hover: hover) {
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--sunken);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--action) 90%, #000);
+  }
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Grows with the text scale but never past 64px: at 150% a plain 3rem
+     would be 85px and two header controls would burst a 320px screen.
+     The floor is 52px, which is what SPEC 11.1 promises — 3rem lands on
+     48px at the default scale, so the clamp is what does the work. */
+  width: clamp(52px, 3rem, 64px);
+  height: clamp(52px, 3rem, 64px);
+  flex: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 3px 0 var(--edge);
+}
+.icon-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--edge);
+}
+.icon-btn-round {
+  border-radius: var(--r-full);
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: clamp(48px, 3rem, 64px);
+  padding-right: 8px;
+  color: var(--action);
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+
+.lang-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 0 1 auto;
+  max-width: 6.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-height: clamp(48px, 2.75rem, 60px);
+  padding: 0 10px;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-full);
+  background: var(--panel);
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--ink);
+}
+/* The language name is the only part allowed to be cut; the globe and the
+   chevron stay whole so the control is still recognisable at 320px. */
+.lang-chip > svg {
+  flex: none;
+}
+.lang-chip > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================================== link ==== */
+
+.inline-link {
+  color: var(--action);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.inline-link:visited {
+  color: var(--action);
+}
+
+/* =============================================================== tile ==== */
+
+.tile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: var(--h-tile);
+  padding: 16px 16px 16px 12px;
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+  box-shadow: 0 3px 0 var(--edge);
+  text-align: left;
+  color: var(--ink);
+  transition: transform 90ms ease-out, box-shadow 90ms ease-out;
+}
+.tile:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--edge);
+}
+@media (hover: hover) {
+  .tile:hover {
+    background: var(--sunken);
+  }
+}
+
+.tile-bar {
+  width: 3px;
+  align-self: stretch;
+  border-radius: var(--r-full);
+  flex: none;
+}
+.tile-bar-danger {
+  background: var(--danger);
+}
+.tile-bar-caution {
+  background: var(--caution-fill);
+}
+
+.tile-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: none;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--action-tint);
+  color: var(--action);
+}
+.plate-danger {
+  background: var(--danger-tint);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.plate-caution {
+  background: var(--caution-tint);
+  border-color: var(--caution);
+  color: var(--caution);
+}
+
+.tile-text {
+  flex: 1;
+  min-width: 0;
+}
+.tile-desc {
+  margin-top: 2px;
+  font-size: var(--t-small);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 339px) {
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quick-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 5.5rem;
+  padding: 12px 8px;
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+  box-shadow: 0 3px 0 var(--edge);
+  color: var(--ink);
+  font-size: var(--t-small);
+  font-weight: 600;
+  text-align: center;
+}
+.quick-tile:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--edge);
+}
+
+/* A label with a rule running out of it to the edge of the column. */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--t-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* =========================================================== composer ==== */
+
+.composer {
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+}
+.composer:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.composer-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 4px 8px 0 16px;
+}
+
+/* Ruled paper with a red margin line. The rule spacing and the line height
+   are the same `2rem`, so the words sit on the lines rather than floating
+   between them, and both grow together when the person enlarges the text.
+
+   `resize: none` on purpose: the box grows with what is typed. A drag
+   handle in the corner looked like a defect on a sheet of ruled paper and
+   let people shrink the box until their own message was unreadable. */
+.composer-area {
+  display: block;
+  width: 100%;
+  min-height: 9.5rem;
+  max-height: 14rem;
+  resize: none;
+  padding: 8px 16px 8px 40px;
+  font-size: var(--t-body);
+  line-height: 2rem;
+  color: var(--ink);
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(2rem - 1px),
+      var(--rule) calc(2rem - 1px),
+      var(--rule) 2rem
+    ),
+    linear-gradient(to right, transparent 28px, var(--margin) 28px,
+      var(--margin) 29.5px, transparent 29.5px);
+  background-attachment: local, local;
+  background-position: 0 8px, 0 0;
+  outline: none;
+}
+
+@media (min-width: 1024px) {
+  .composer-area {
+    min-height: 13.5rem;
+  }
+}
+
+.composer-tools {
+  display: flex;
+  border-top: 1px solid var(--rule);
+}
+
+.composer-tool {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 3.5rem;
+  padding: 8px 4px;
+  color: var(--ink);
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.composer-tool + .composer-tool {
+  border-left: 1px solid var(--rule);
+}
+.composer-tool:active {
+  background: var(--sunken);
+}
+.composer-tool-live {
+  background: var(--danger-tint);
+  color: var(--danger);
+}
+
+/* Arriving from Home's "Speak" or "Photo" button. The ring says "this is
+   the one you asked for" without moving anything, so the row does not
+   reflow under a thumb that is already coming down. */
+.composer-tool-primed {
+  background: var(--action-tint);
+  color: var(--action);
+  box-shadow: inset 0 0 0 2px var(--action);
+}
+.composer-tool-primed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 var(--action);
+  animation: prime-ring 2.4s ease-out 3;
+  pointer-events: none;
+}
+.composer-tool {
+  position: relative;
+}
+
+@keyframes prime-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--action) 45%, transparent);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+.rec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--danger);
+  animation: rec-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes rec-pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.privacy-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--t-caption);
+  color: var(--ink-2);
+}
+
+/* ====================================================== panel / note ==== */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 20px;
+}
+
+.panel-sunken {
+  background: var(--sunken);
+}
+
+/* A note written in the margin of the ledger. */
+.note {
+  background: var(--sunken);
+  border-left: 4px solid var(--margin);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 16px 20px;
+}
+.note-title {
+  font-size: var(--t-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.note-body {
+  font-family: var(--ui-serif);
+  font-size: var(--t-lead);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--caution-tint);
+  border-bottom: 1px solid var(--caution);
+  color: var(--caution);
+  font-size: var(--t-caption);
+  font-weight: 600;
+}
+
+/* ======================================================= undo bar ======== */
+
+/* Sits above the tab bar, not over the content it refers to, so the person
+   can still see the now-empty list and understand what the offer is about.
+   Inline in the flow on desktop where there is room; fixed on a phone. */
+.undo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 12px 16px;
+  border: var(--edge-w) solid var(--ink-1);
+  border-bottom-width: 3px;
+  border-radius: var(--r-md);
+  background: var(--panel);
+  animation: undo-in 160ms ease-out;
+}
+
+.undo-bar-text {
+  font-size: var(--t-body);
+  font-weight: 600;
+}
+
+.undo-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@keyframes undo-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.verdict {
+  border-radius: var(--r-md);
+  padding: 20px;
+  border: 2px solid var(--ink-3);
+  background: var(--panel);
+}
+.verdict-HIGH {
+  border-color: var(--danger);
+  background: var(--danger-tint);
+}
+.verdict-MULTIPLE {
+  border-color: var(--danger);
+  background: var(--caution-tint);
+}
+.verdict-SOME {
+  border-color: var(--caution);
+  background: var(--caution-tint);
+}
+/* Dashed means "we could not verify this", never "safe". */
+.verdict-NONE {
+  border-style: dashed;
+  border-color: var(--ink-3);
+  background: var(--sunken);
+}
+.verdict-NOT_ENOUGH {
+  border-color: var(--action);
+  background: var(--action-tint);
+}
+
+.error-state {
+  background: var(--danger-tint);
+  border-left: 4px solid var(--danger);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 16px 20px;
+}
+
+.empty-state {
+  background: var(--sunken);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--r-md);
+  padding: 24px 20px;
+}
+
+/* ============================================================== stamp ==== */
+
+.stamp {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 9.5rem;
+  padding: 10px 18px;
+  border: 3px solid currentColor;
+  border-radius: var(--r-sm);
+  transform: rotate(-4deg);
+  mix-blend-mode: multiply;
+}
+:root[data-theme="dark"] .stamp {
+  mix-blend-mode: normal;
+}
+.stamp::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+}
+.stamp-word {
+  font-size: var(--t-stamp);
+  font-weight: 600;
+  line-height: 1.1;
+}
+.stamp-sub {
+  font-size: 0.6111rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.stamp-HIGH,
+.stamp-MULTIPLE {
+  color: var(--danger);
+}
+.stamp-SOME {
+  color: var(--caution);
+}
+.stamp-NONE {
+  color: var(--ink-2);
+}
+.stamp-NOT_ENOUGH {
+  color: var(--action);
+}
+
+@keyframes stamp-thunk {
+  from {
+    transform: rotate(-7deg) scale(1.12);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(-4deg) scale(1);
+    opacity: 1;
+  }
+}
+.stamp-thunk {
+  animation: stamp-thunk 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* ============================================================== ruler ==== */
+
+.ruler {
+  display: flex;
+  height: 14px;
+  border: 1.5px solid var(--edge);
+  border-radius: 7px;
+  overflow: hidden;
+  background: var(--sunken);
+}
+.ruler-seg {
+  flex: 1;
+  background: var(--sunken);
+}
+.ruler-seg + .ruler-seg {
+  border-left: 1.5px solid var(--edge);
+}
+.ruler-seg-on {
+  background: var(--seg, var(--ink-2));
+}
+
+.ruler-labels {
+  display: flex;
+  margin-top: 8px;
+}
+.ruler-label {
+  flex: 1;
+  font-size: var(--t-caption);
+  color: var(--ink-2);
+  text-align: center;
+}
+.ruler-label-on {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.progress {
+  height: 8px;
+  border: 1.5px solid var(--edge);
+  border-radius: 4px;
+  background: var(--sunken);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--action);
+  transition: width 160ms ease-out;
+}
+.progress-tall {
+  height: 16px;
+  border-radius: 8px;
+}
+
+/* ============================================================== entry ==== */
+
+.entry {
+  display: flex;
+  gap: 12px;
+  padding: 20px 0;
+}
+.entry + .entry {
+  border-top: 1px solid var(--rule);
+}
+.entry-n {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-full);
+  background: var(--panel);
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+
+.quote {
+  background: var(--sunken);
+  border-left: 3px solid var(--qc, var(--ink-2));
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 12px 16px;
+  font-size: 0.9444rem;
+}
+
+/* Highlighter, not underline: it marks the words without adding a line. */
+.mark {
+  background: linear-gradient(
+    transparent 58%,
+    color-mix(in srgb, var(--danger) 30%, transparent) 58% 92%,
+    transparent 92%
+  );
+  padding: 0 2px;
+}
+:root[data-theme="dark"] .mark {
+  background: linear-gradient(
+    transparent 58%,
+    color-mix(in srgb, var(--danger) 35%, transparent) 58% 92%,
+    transparent 92%
+  );
+}
+
+/* ========================================================= disclosure ==== */
+
+.disclosure {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: var(--h-target);
+  color: var(--action);
+  font-size: var(--t-small);
+  font-weight: 600;
+  text-align: left;
+}
+.disclosure-chev {
+  transition: transform 160ms ease-out;
+}
+.disclosure[aria-expanded="true"] .disclosure-chev {
+  transform: rotate(180deg);
+}
+
+/* ============================================================== sheet ==== */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: var(--scrim);
+  z-index: 40;
+  animation: fade 160ms ease-out;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  max-height: 85dvh;
+  overflow-y: auto;
+  background: var(--panel);
+  border-top: 1.5px solid var(--edge);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+  animation: sheet-up 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: var(--r-full);
+  background: var(--rule);
+  margin: 8px auto 0;
+}
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px 0;
+}
+.sheet-body {
+  padding: 20px;
+}
+
+@media (min-width: 600px) {
+  .sheet {
+    left: 50%;
+    bottom: auto;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(480px, calc(100vw - 48px));
+    border: 1.5px solid var(--edge);
+    border-radius: var(--r-lg);
+    animation: none;
+  }
+  .sheet-handle {
+    display: none;
+  }
+}
+
+.snackbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(var(--h-tab) + 16px + env(safe-area-inset-bottom));
+  z-index: 60;
+  max-width: 480px;
+  width: calc(100% - 40px);
+  background: var(--ink);
+  color: var(--page);
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  font-size: var(--t-small);
+}
+
+/* ============================================================= inputs ==== */
+
+.field-label {
+  display: block;
+  font-size: var(--t-small);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.field {
+  width: 100%;
+  min-height: var(--h-btn);
+  padding: 0 16px;
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+  font-size: var(--t-body);
+}
+textarea.field {
+  padding: 12px 16px;
+  min-height: 7rem;
+  line-height: var(--lh-body);
+}
+.field-help {
+  margin-top: 8px;
+  font-size: var(--t-caption);
+  color: var(--ink-2);
+}
+.field-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--danger);
+}
+.field-invalid {
+  border-width: 2px;
+  border-color: var(--danger);
+}
+
+.money-row {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+  background: var(--panel);
+  overflow: hidden;
+}
+.money-prefix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  flex: none;
+  background: var(--sunken);
+  border-right: 1.5px solid var(--edge);
+  font-size: var(--t-lead);
+  font-weight: 600;
+}
+.money-input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--h-btn);
+  padding: 0 16px;
+  font-size: var(--t-money);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* A blank in a printed form: a dotted line you write on. */
+.blank {
+  min-width: 6ch;
+  border-bottom: 1.5px dotted var(--ink-2);
+  padding: 0 4px;
+  font: inherit;
+  text-align: center;
+}
+.blank:focus {
+  background: var(--sunken);
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 3.75rem;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+  box-shadow: 0 3px 0 var(--edge);
+  text-align: left;
+  font-size: var(--t-body);
+}
+.option-row:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--edge);
+}
+.option-row-on {
+  background: var(--action-tint);
+  border-width: 2px;
+  border-color: var(--action);
+  box-shadow: 0 3px 0 var(--action);
+}
+
+.radio-mark,
+.check-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5556rem;
+  height: 1.5556rem;
+  flex: none;
+  border: 1.5px solid var(--edge);
+  background: var(--panel);
+  color: var(--action-fg);
+}
+.radio-mark {
+  border-radius: var(--r-full);
+}
+.check-mark {
+  border-radius: var(--r-sm);
+}
+.mark-on {
+  background: var(--action);
+  border-color: var(--action);
+}
+.radio-dot {
+  width: 0.6667rem;
+  height: 0.6667rem;
+  border-radius: var(--r-full);
+  background: var(--action-fg);
+}
+
+.check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  min-height: var(--h-target);
+  padding: 12px 0;
+  text-align: left;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 2.75rem;
+  padding: 0 16px;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-full);
+  background: var(--panel);
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--ink);
+  /* Chosen and not-chosen used to swap instantly, which on a slow phone is
+     indistinguishable from nothing happening — and these chips are the one
+     place a person can un-choose by tapping again, so the state change is
+     worth making visible. Border-width is left out of the transition on
+     purpose: animating it nudges the text and reads as a wobble. */
+  transition:
+    background-color 120ms ease-out,
+    border-color 120ms ease-out,
+    color 120ms ease-out;
+}
+.chip-on {
+  background: var(--action-tint);
+  border-width: 2px;
+  border-color: var(--action);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--ink-2);
+  background: var(--sunken);
+  color: var(--ink-2);
+  font-size: var(--t-caption);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tag-danger {
+  border-color: var(--danger);
+  background: var(--danger-tint);
+  color: var(--danger);
+}
+.tag-caution {
+  border-color: var(--caution);
+  background: var(--caution-tint);
+  color: var(--caution);
+}
+.tag-action {
+  border-color: var(--action);
+  background: var(--action-tint);
+  color: var(--action);
+}
+.tag-ok {
+  border-color: var(--ok);
+  background: var(--ok-tint);
+  color: var(--ok);
+}
+
+.segmented {
+  display: flex;
+  width: 100%;
+  min-height: 3rem;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--panel);
+}
+.segmented-cell {
+  flex: 1;
+  min-height: 3rem;
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--ink);
+}
+.segmented-cell + .segmented-cell {
+  border-left: 1px solid var(--edge);
+}
+.segmented-cell-on {
+  background: var(--action);
+  color: var(--action-fg);
+}
+
+.switch-track {
+  width: 56px;
+  height: 32px;
+  flex: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-full);
+  background: var(--sunken);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+.switch-track-on {
+  background: var(--action);
+  justify-content: flex-end;
+}
+.switch-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--r-full);
+  background: var(--panel);
+  border: 1px solid var(--edge);
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 3.75rem;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: var(--t-body);
+}
+.setting-row + .setting-row {
+  border-top: 1px solid var(--rule);
+}
+
+.slider {
+  width: 100%;
+  height: 32px;
+  accent-color: var(--action);
+}
+
+/* ============================================================= tables ==== */
+
+.kv {
+  width: 100%;
+  border-collapse: collapse;
+}
+.kv th,
+.kv td {
+  text-align: left;
+  padding: 12px 16px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9444rem;
+  font-weight: 400;
+}
+.kv th {
+  font-size: var(--t-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+  width: 40%;
+}
+.kv thead th {
+  border-top: none;
+  border-bottom: 1.5px solid var(--edge);
+  box-shadow: 0 3px 0 -1.5px var(--edge);
+}
+
+.ledger-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 12px 0;
+  text-align: left;
+}
+.ledger-row + .ledger-row {
+  border-top: 1px solid var(--rule);
+}
+.date-block {
+  width: 3.1111rem;
+  flex: none;
+  text-align: center;
+}
+.date-day {
+  font-family: var(--ui-serif);
+  font-size: var(--t-h3);
+  line-height: 1.1;
+}
+.date-mon {
+  font-size: var(--t-caption);
+  color: var(--ink-2);
+}
+
+/* ======================================================== bottom bars ==== */
+
+.tab-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  background: var(--panel);
+  border-top: 1.5px solid var(--edge);
+  height: calc(var(--h-tab) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  /* A fixed px floor, not rem: at 150% text a rem floor would push five
+     tabs past a 320px screen and tip the whole page sideways. Five tabs in
+     320px leaves 64px each, which is still over the 48px target minimum. */
+  min-width: 48px;
+  padding-inline: 2px;
+  overflow: hidden;
+  color: var(--ink-2);
+  font-size: var(--t-caption);
+  font-weight: 600;
+}
+.tab-label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tab-on {
+  color: var(--ink);
+}
+.tab-on::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--action);
+}
+.tab-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  max-width: 100%;
+  height: 32px;
+  flex: none;
+  border-radius: var(--r-full);
+}
+.tab-on .tab-plate {
+  background: var(--action-tint);
+}
+
+.sticky-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  background: var(--page);
+  border-top: 1px solid var(--rule);
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+}
+
+/* ====================================================== wizard flow ====== */
+
+.start-screen {
+  padding-bottom: 8px;
+}
+
+.wizard-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.wizard-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.wizard-nav > .btn-primary {
+  margin-left: auto;
+}
+
+.promise {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.promise-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: var(--r-full);
+  background: var(--action-tint);
+  color: var(--action);
+}
+
+/* The breaker runs on the calm surface: a different room, not a louder one. */
+.breaker {
+  min-height: 100%;
+  margin: calc(-1 * var(--page-pad-y, 0px)) -20px 0;
+  padding: 0 20px 20px;
+  background: var(--calm);
+}
+.breaker-close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 0;
+}
+.breaker-goon {
+  border-top: 1px solid var(--rule);
+  padding-top: 20px;
+}
+.pact-read {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.breath {
+  margin-top: 24px;
+  line-height: 1.5;
+}
+
+/* ========================================================= the pact ===== */
+
+.pact-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.pact-n {
+  padding-top: 18px;
+  flex: none;
+}
+.pact-line .check-row {
+  flex: 1;
+}
+.pact-blank-line {
+  line-height: 2;
+}
+.pact-signed {
+  border-width: 2px;
+}
+
+.hold-sign {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--h-btn-emergency);
+  overflow: hidden;
+  border: 2px solid var(--edge);
+  border-radius: var(--r-md);
+  background: var(--panel);
+  color: var(--ink);
+  font-size: var(--t-button);
+  font-weight: 600;
+}
+.hold-fill {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  background: var(--action-tint);
+}
+.hold-text {
+  position: relative;
+}
+
+.journal-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.journal-body {
+  min-width: 0;
+  flex: 1;
+}
+
+/* ====================================================== madad plan ====== */
+
+.field-pair {
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 600px) {
+  .field-pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* What you say on the call, set on ruled paper and big enough to read while
+   holding the phone to your ear. */
+.script-card {
+  border: 2px solid var(--edge);
+  border-radius: var(--r-md);
+  background: var(--panel);
+  background-image: repeating-linear-gradient(
+    var(--panel) 0,
+    var(--panel) calc(1.7em - 1px),
+    var(--rule) calc(1.7em - 1px),
+    var(--rule) 1.7em
+  );
+  padding: 0 16px 8px;
+  font-family: var(--ui-serif);
+  font-size: var(--t-lead);
+  line-height: 1.7;
+}
+
+.time-boxes {
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 720px) {
+  .time-boxes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.time-box {
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--panel);
+  padding: 16px;
+}
+.time-box-head {
+  font-family: var(--ui-serif);
+  font-size: var(--t-h3);
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--rule);
+}
+.plan-step {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.plan-bullet {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.bullet-dot {
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: var(--r-full);
+  background: var(--ink-3);
+}
+.draft-block {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  border: 1.5px solid var(--rule);
+  border-radius: var(--r-sm);
+  background: var(--sunken);
+  padding: 12px;
+  font-family: var(--ui-mono);
+  font-size: var(--t-small);
+}
+.timeline-row {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 16px;
+}
+
+.app-footer {
+  border-top: 1px solid var(--rule);
+  padding: 20px 0 24px;
+  font-size: var(--t-caption);
+  color: var(--ink-2);
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 8px;
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.footer-links a {
+  display: inline-block;
+  padding: 12px 0;
+}
+
+/* ============================================= tabs (ledger, simulate) ==== */
+
+.ltabs {
+  display: flex;
+  gap: 4px;
+}
+.ltab {
+  flex: 1;
+  min-height: 3rem;
+  border: 1.5px solid var(--edge);
+  border-bottom: none;
+  border-radius: var(--r-md) var(--r-md) 0 0;
+  background: var(--sunken);
+  color: var(--ink-2);
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+.ltab-on {
+  background: var(--panel);
+  color: var(--ink);
+}
+.ltabs-body {
+  border: 1.5px solid var(--edge);
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  background: var(--panel);
+  padding: 20px;
+}
+
+/* ============================================================ desktop ==== */
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .shell {
+    border-left: 1.5px solid var(--edge);
+    border-right: 1.5px solid var(--edge);
+    border-radius: var(--r-md);
+    margin-block: 24px;
+    min-height: calc(100dvh - 48px);
+  }
+}
+
+.spread {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .spread {
+    display: grid;
+    /* The content column used to be pinned at 560px, which on a 1440px
+       screen left the app as a phone-shaped strip with 460px of bare desk
+       either side. It now grows with the viewport up to a measure that is
+       still comfortable to read — around 90 characters at the body size —
+       and stops there rather than running to the full width. */
+    grid-template-columns: 360px minmax(560px, 52rem);
+    column-gap: 64px;
+    justify-content: center;
+    align-items: start;
+    padding: 48px 32px;
+  }
+  .rail {
+    position: sticky;
+    top: 48px;
+  }
+  .spread .shell {
+    border: 1.5px solid var(--edge);
+    border-radius: var(--r-md);
+    min-height: calc(100dvh - 96px);
+    /* Beats the 560px cap the shell carries for phones. */
+    max-width: none;
+  }
+  .spread .tab-bar {
+    display: none;
+  }
+}
+
+.rail {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .rail {
+    display: block;
+  }
+}
+
+.rail-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--h-target);
+  padding: 0 12px;
+  border-radius: var(--r-md);
+  font-size: var(--t-button);
+  font-weight: 600;
+  color: var(--ink);
+}
+.rail-nav-item-on {
+  background: var(--action-tint);
+  box-shadow: inset 3px 0 0 var(--action);
+}
+
+/* ============================================================== print ==== */
+
+@page {
+  size: A4;
+  margin: 18mm 16mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+  .no-print,
+  .tab-bar,
+  .sticky-bar,
+  .app-header,
+  .app-bar,
+  .app-footer,
+  .btn,
+  .rail,
+  .icon-btn {
+    display: none !important;
+  }
+  .shell,
+  .spread {
+    max-width: none;
+    padding: 0;
+    border: none;
+    display: block;
+  }
+  .panel,
+  .note,
+  .verdict {
+    border: 0.5pt solid #000;
+    background: #fff;
+    break-inside: avoid;
+  }
+  h1 {
+    border-bottom: 1.5pt solid #000;
+    padding-bottom: 4mm;
+  }
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+  input,
+  textarea {
+    border: 0.5pt solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  textarea {
+    white-space: pre-wrap;
+    overflow: visible;
+    height: auto;
+  }
+}
+
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ====== rule list ====== */
+
+.rule-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--line-hair) solid var(--rule);
+}
+.rule-list > li {
+  border-bottom: var(--line-hair) solid var(--rule);
+  padding: 12px 0;
+  line-height: var(--lh-body);
+}
+.break-all {
+  word-break: break-all;
+}
+.double-rule-top {
+  border-top: var(--line-thick) solid var(--ink);
+  padding-top: 12px;
+}
+
+.setting-list {
+  border-top: var(--line-hair) solid var(--rule);
+}
+.setting-list > * {
+  border-bottom: var(--line-hair) solid var(--rule);
+}
+
+/* ====== learn card ====== */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: var(--ink-2);
+}
+.back-link:hover {
+  color: var(--ink);
+}
+.trap-line {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.trap-line > svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--danger);
+}
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: var(--line-hair) solid var(--rule);
+  padding-top: 8px;
+}
+
+/* ====== simulator ====== */
+
+.tabs {
+  display: flex;
+  border-bottom: var(--line-thick) solid var(--ink);
+}
+.tab-btn {
+  flex: 1;
+  min-height: 48px;
+  padding: 10px 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--panel);
+  border: var(--line-hair) solid var(--rule);
+  border-bottom: none;
+}
+.tab-btn-on {
+  color: var(--ink);
+  background: var(--sunken);
+  border: var(--line-thick) solid var(--ink);
+  border-bottom: none;
+}
+.range {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 8px;
+  accent-color: var(--ink);
+}
+.banner-caution {
+  border-color: var(--caution);
+}
+.sim-bar {
+  margin-top: 14px;
+}
+.sim-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.sim-bar-track {
+  flex: 1;
+  display: block;
+  height: 20px;
+  background: var(--page);
+  border: var(--line-hair) solid var(--rule);
+}
+.sim-bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+}
+.sim-bar-fill-strong {
+  background: var(--danger);
+}
+.sim-bar-value {
+  flex: none;
+  width: 6.5rem;
+  text-align: right;
+  font-size: var(--t-caption);
+}
+.pick-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.pick-cell {
+  flex: 1;
+  min-height: 48px;
+  min-width: 0;
+  padding: 8px 4px;
+  color: var(--ink-2);
+  background: var(--panel);
+  border: var(--line-hair) solid var(--rule);
+}
+.pick-cell-on {
+  color: var(--ink);
+  font-weight: 600;
+  background: var(--sunken);
+  border: var(--line-thick) solid var(--ink);
+}
+.check-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+}
+.check-inline > input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--ink);
+}
+.sim-figure {
+  margin: 8px 0 0;
+}
+.sim-chart {
+  width: 100%;
+  display: block;
+  background: var(--sunken);
+  border: var(--line-hair) solid var(--rule);
+}
+.run-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ====== caregiver checklist ====== */
+
+.check-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  /* The box itself is 24px, but the whole row is the label and therefore
+     the whole row is the tap target. 52px, per SPEC 11.1. */
+  min-height: 52px;
+}
+.check-line > input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  margin-top: 2px;
+  accent-color: var(--ink);
+}
+.check-n {
+  flex: none;
+}
+.check-body {
+  flex: 1;
+  min-width: 0;
+  display: block;
+}
+.check-body > .t-tile {
+  display: block;
+}
+.share-diagram {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+.share-cell {
+  width: 100%;
+  display: block;
+}
+
+.card-canvas {
+  width: 100%;
+  display: block;
+  margin-top: 16px;
+  border: var(--line-thick) solid var(--ink);
+}
+
+.icon-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 16px;
+}
+.icon-grid > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+/* ====== text size stepper ======
+
+   Two buttons rather than one cycling button, so a person who has made the
+   text too big can step back down without going all the way round again.
+   The pair has to share the header with the language chip, so both buttons
+   are held to exactly the 48px floor and the glyph between them is purely
+   decorative: the size each button will reach is in its own aria-label. */
+
+.size-group {
+  display: flex;
+  align-items: center;
+  flex: none;
+  border: var(--line-hair) solid var(--rule);
+}
+.size-btn {
+  /* 52px, the floor SPEC 11.1 sets for every touch target. These two sit
+     side by side in Settings and were the only controls still at 48. */
+  width: 52px;
+  min-width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+}
+.size-btn:disabled {
+  color: var(--ink-3);
+  opacity: 0.45;
+}
+.size-now {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 28px;
+  color: var(--ink-2);
+  border-inline: var(--line-hair) solid var(--rule);
+  align-self: stretch;
+}

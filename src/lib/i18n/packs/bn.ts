@@ -1,0 +1,110 @@
+import type { Pack } from "../langs";
+import { bnHelp } from "./bn-help";
+import { bnSignals } from "./bn-signals";
+
+/* Bengali. Machine-assisted, awaiting a native read. */
+export const bn: Pack = {
+  lang: "bn",
+  needsReview: true,
+  strings: {
+    ...bnSignals,
+    ...bnHelp,
+    "app.tagline": "থামুন · যাচাই করুন · বুঝুন",
+    "app.disclaimer":
+      "আমরা বিনিয়োগের পরামর্শ দিই না। এটি SANGYAN হ্যাকাথনের একটি প্রোটোটাইপ, SEBI বা NSDL-এর সরকারি অ্যাপ নয়।",
+    "app.skipToContent": "মূল লেখায় যান",
+
+    "nav.back": "পিছনে",
+    "nav.home": "হোম",
+    "nav.settings": "সেটিংস",
+    "nav.about": "আমাদের সম্পর্কে",
+    "nav.language": "ভাষা",
+
+    "common.yes": "হ্যাঁ",
+    "common.no": "না",
+    "common.dontKnow": "জানি না",
+    "common.continue": "পরের ধাপ",
+    "common.cancel": "বাতিল",
+    "common.copy": "কপি করুন",
+    "common.copied": "কপি হয়েছে",
+    "common.listen": "শুনুন",
+    "common.stop": "থামান",
+    "common.beta": "(বিটা)",
+    "common.close": "বন্ধ",
+    "common.save": "রাখুন",
+
+    "tab.home": "হোম",
+    "tab.check": "যাচাই",
+    "tab.madad": "সাহায্য",
+    "tab.pause": "থামুন",
+    "tab.more": "আরও",
+
+    "home.hero": "কোনো মেসেজ এসেছে?",
+    "home.heroLead": "টাকা বা OTP দেওয়ার আগে এখানে যাচাই করে নিন।",
+    "home.more": "আর কিছু দরকার?",
+    "home.madad": "টাকা চলে গেছে?",
+    "home.madadLine": "প্রথম ঘণ্টা, এখান থেকেই শুরু করুন",
+    "home.pause": "থামুন",
+    "home.pauseLine": "কিছু করার আগে এক মিনিট",
+    "home.traps": "প্রতারণার চেনা ধরন",
+    "home.trapsSub": "দেখুন কেমন দেখতে হয়",
+    "home.trapSub": "দেখুন এটি কেমন দেখতে",
+    "home.trap1": "VIP গ্রুপে ডাক",
+    "home.trap2": "OTP চাওয়া",
+    "home.trap3": "ফি দিলে তবেই টাকা মিলবে",
+    "home.trap4": "অ্যাপ বসাতে বা স্ক্রিন শেয়ার করতে বলা",
+    "home.steps": "তিনটি ধাপ",
+    "home.step1": "মেসেজ পেস্ট করুন, বলুন বা ছবি পাঠান",
+    "home.step2": "ফলাফল আর কারণগুলো দেখুন",
+    "home.step3": "থেমে সিদ্ধান্ত নিন। চাইলে পরিবারকে জানান।",
+    "home.lastCheck": "শেষ যাচাই",
+    "home.openCase": "আপনার কেসটি খোলা আছে",
+    "home.openCaseGo": "চালিয়ে যান",
+    "home.learn": "বুঝুন",
+    "home.family": "পরিবার",
+    "home.history": "আগের যাচাই",
+    "home.historyShort": "আগের যাচাই",
+    "home.tipOfDay": "আজকের একটি কথা",
+    "home.lateNight": "বড় সিদ্ধান্ত সকালে পরিষ্কার লাগে",
+    "home.pauseOpen": "থামুন খুলুন",
+    "home.privacyLabel": "এই ফোনের বাইরে গেছে",
+    "home.privacyLine": "যাচাই এই ফোনেই। কোনো অ্যাকাউন্ট নেই। কোনো পরামর্শ নেই।",
+    "home.privacySee": "আপনার তথ্য কোথায় গেল",
+    "home.sampleLink": "একটি নমুনা মেসেজ দেখুন",
+    "home.installAdd": "যোগ করুন",
+
+    "quick.placeholder": "মেসেজটি এখানে পেস্ট করুন…",
+    "quick.check": "মেসেজ যাচাই করুন",
+    "quick.speak": "বলে",
+    "quick.photo": "ছবি",
+    "quick.paste": "পেস্ট",
+
+    "sample.banner": "এটি একটি নমুনা মেসেজ",
+    "sample.own": "নিজের মেসেজ যাচাই করুন",
+
+    "check.title": "আপনার কাছে কী এসেছে?",
+    "check.placeholder": "মেসেজটি এখানে পেস্ট করুন",
+    "check.submit": "যাচাই করুন",
+    "check.clear": "মুছুন",
+
+    "state.HIGH_RISK.stamp": "বিপদ",
+    "state.MULTIPLE_RED_FLAGS.stamp": "সাবধান",
+    "state.SOME_CONCERNS.stamp": "ভালো করে দেখুন",
+    "state.NO_STRONG_FLAGS.stamp": "জোরালো কিছু নেই",
+    "state.NOT_ENOUGH_TO_GO_ON.stamp": "যথেষ্ট নয়",
+
+    "result.title": "ফলাফল",
+    "result.whatNow": "এখন কী করবেন",
+    "result.why": "কেন",
+
+    "privacy.onDevice": "যাচাই কেবল এই ফোনেই হয়",
+
+    "start.langTitle": "আপনার ভাষা বেছে নিন",
+    "start.promisesTitle": "তিনটি প্রতিশ্রুতি",
+
+    "settings.title": "সেটিংস",
+    "settings.language": "ভাষা",
+    "settings.textSize": "লেখার আকার",
+    "settings.theme": "চেহারা",
+  },
+};

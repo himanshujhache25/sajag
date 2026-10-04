@@ -1,0 +1,180 @@
+/* ============================================================================
+   Sajag design tokens. The single source of colour, size and shape.
+   Nothing outside this file may write a hex colour or a raw px font size.
+   Section 3 of docs/UI_SPEC.md. A test greps src/app and src/components for
+   hex literals and arbitrary Tailwind values and fails the build if any exist.
+   ========================================================================== */
+
+:root {
+  /* -- surfaces ------------------------------------------------------- */
+  --desk: #e6dcc3;
+  --page: #f8f3e7;
+  --panel: #fffdf7;
+  --sunken: #efe7d3;
+  --calm: #edefe3;
+
+  /* -- ink ------------------------------------------------------------ */
+  --ink: #1b2231;
+  --ink-2: #474f5f;
+  --ink-3: #5c6474;
+
+  /* -- lines ---------------------------------------------------------- */
+  --edge: #2b3345;
+  --rule: #d5c9ad;
+  --border: #cfc3a6;
+  --margin: rgba(201, 83, 63, 0.45);
+
+  /* -- action --------------------------------------------------------- */
+  --action: #1f3a68;
+  --action-fg: #fffdf7;
+  --action-tint: #dfe6f3;
+
+  /* -- states --------------------------------------------------------- */
+  --danger: #a3241d;
+  --danger-fill: #a3241d;
+  --danger-fg: #fffdf7;
+  --danger-tint: #f6e1dd;
+  --caution: #8a5100;
+  --caution-fill: #e5a21a;
+  --caution-tint: #f8ebcb;
+  --ok: #2d6a4f;
+  --ok-tint: #ddebdd;
+
+  --focus: #1f3a68;
+  --scrim: rgba(27, 34, 49, 0.45);
+
+  /* -- fonts ---------------------------------------------------------
+     next/font sets the two `*-loaded` variables on <html>. These are
+     deliberately not called `--font-sans`: a Tailwind theme key that points
+     at a variable of its own name is a circular reference and resolves to
+     nothing, which silently drops the whole typeface. */
+  --ui-sans:
+    var(--font-sans-loaded), system-ui, -apple-system, "Segoe UI", Roboto,
+    "Noto Sans", "Noto Sans Devanagari", "Noto Sans Bengali",
+    "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Gujarati", sans-serif;
+  --ui-serif:
+    var(--font-serif-loaded), "Noto Serif", "Noto Serif Devanagari", Georgia,
+    serif;
+  --ui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* -- scale ---------------------------------------------------------- */
+  --text-scale: 1;
+  --script-scale: 1;
+  --lh-body: 1.55;
+
+  /* -- radius --------------------------------------------------------- */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-full: 999px;
+
+  /* -- type scale, in rem so the text-size control moves everything ---- */
+  --t-caption: 0.7778rem; /* 14px */
+  --t-small: 0.8889rem; /* 16 */
+  --t-body: 1rem; /* 18 */
+  --t-lead: 1.1111rem; /* 20 */
+  --t-button: 1.0556rem; /* 19 */
+  --t-tile: 1.1111rem; /* 20 */
+  --t-h3: 1.2222rem; /* 22 */
+  --t-h2: 1.4444rem; /* 26 */
+  --t-h1: 1.6667rem; /* 30 */
+  --t-stamp: 1.4444rem; /* 26 */
+  --t-money: 1.5556rem; /* 28 */
+
+  /* -- component heights, in rem so they grow with the text ----------- */
+  --h-target: 3.25rem; /* 52 */
+  --h-btn: 3.5rem; /* 56 */
+  --h-btn-emergency: 4rem; /* 64 */
+  --h-tile: 5.75rem; /* 92 */
+  --h-tab: 4rem; /* 64 */
+
+  color-scheme: light;
+}
+
+/* Devanagari sets visually smaller than Latin at the same point size. */
+:root[lang="hi"],
+:root[lang="mr"] {
+  --script-scale: 1.055;
+}
+:root[lang="bn"] {
+  --lh-body: 1.65;
+}
+:root[lang="ta"],
+:root[lang="te"] {
+  --lh-body: 1.75;
+}
+:root[lang="en"] {
+  --lh-body: 1.55;
+}
+
+:root[data-scale="125"] {
+  --text-scale: 1.25;
+}
+:root[data-scale="150"] {
+  --text-scale: 1.5;
+}
+
+/* ---------------------------------------------------------------- dark --
+   "Night ledger". Not an inversion: panels sit one step lighter than the
+   page and keep a warm border, so they separate without any shadow. */
+:root[data-theme="dark"] {
+  --desk: #0e0c09;
+  --page: #17140f;
+  --panel: #211d16;
+  --sunken: #110f0b;
+  --calm: #14170f;
+
+  --ink: #f2ead8;
+  --ink-2: #c2b8a2;
+  --ink-3: #a39983;
+
+  --edge: #8a7e64;
+  --rule: #3a3327;
+  --border: #3a3327;
+  --margin: rgba(238, 131, 120, 0.5);
+
+  --action: #b5c9f0;
+  --action-fg: #0f1a33;
+  --action-tint: #1e2a44;
+
+  --danger: #ee8378;
+  --danger-fill: #c9473d;
+  --danger-fg: #fffdf7;
+  --danger-tint: #3a1e1b;
+  --caution: #edb55a;
+  --caution-fill: #e8a93a;
+  --caution-tint: #33270f;
+  --ok: #79c9a1;
+  --ok-tint: #1b2e25;
+
+  --focus: #f2c14e;
+  --scrim: rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------- high contrast --
+   Secondary ink becomes primary ink, tints disappear, borders double.
+   State is then carried by border style, icon and word only. */
+:root[data-contrast="high"] {
+  --ink-2: var(--ink);
+  --ink-3: var(--ink);
+  --action-tint: var(--panel);
+  --danger-tint: var(--panel);
+  --caution-tint: var(--panel);
+  --ok-tint: var(--panel);
+  --sunken: var(--panel);
+  --border: var(--edge);
+  --rule: var(--edge);
+  /* Danger, caution and ok do not clear 7:1 on their own; each is pushed a
+     step further from the surface rather than being allowed to fail. */
+  --danger: #8c1d17;
+  --caution: #6f4100;
+  --ok: #1f4f3a;
+}
+
+:root[data-theme="dark"][data-contrast="high"] {
+  --danger: #ffa79c;
+  --caution: #f2c87e;
+  --ok: #9cdcbb;
+}

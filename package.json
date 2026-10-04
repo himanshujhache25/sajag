@@ -1,0 +1,54 @@
+{
+  "name": "sajag",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "design": "playwright test e2e/design.spec.ts",
+    "shots": "vite-node -c vitest.config.ts scripts/shots.ts",
+    "typecheck": "tsc --noEmit",
+    "eval": "vite-node -c vitest.config.ts scripts/eval.ts",
+    "probe": "vite-node -c vitest.config.ts scripts/probe.ts --",
+    "format": "prettier --write .",
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "@fontsource/mukta": "^5.3.0",
+    "@fontsource/tiro-devanagari-hindi": "^5.3.0",
+    "idb-keyval": "^6.3.0",
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tesseract.js": "^7.0.0",
+    "tldts": "^7.4.16",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "jsdom": "^30.1.1",
+    "prettier": "^3.9.9",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vite": "^8.3.2",
+    "vite-node": "^6.0.0",
+    "vitest": "^5.0.3"
+  }
+}

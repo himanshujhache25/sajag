@@ -1,0 +1,110 @@
+import type { Pack } from "../langs";
+import { taHelp } from "./ta-help";
+import { taSignals } from "./ta-signals";
+
+/* Tamil. Machine-assisted, awaiting a native read. */
+export const ta: Pack = {
+  lang: "ta",
+  needsReview: true,
+  strings: {
+    ...taSignals,
+    ...taHelp,
+    "app.tagline": "நிறுத்து · சரிபார் · புரிந்துகொள்",
+    "app.disclaimer":
+      "நாங்கள் முதலீட்டு ஆலோசனை தருவதில்லை. இது SANGYAN ஹேக்கத்தான் முன்மாதிரி, SEBI அல்லது NSDL இன் அதிகாரப்பூர்வ செயலி அல்ல.",
+    "app.skipToContent": "முதன்மை உள்ளடக்கத்திற்குச் செல்",
+
+    "nav.back": "பின்",
+    "nav.home": "முகப்பு",
+    "nav.settings": "அமைப்புகள்",
+    "nav.about": "எங்களைப் பற்றி",
+    "nav.language": "மொழி",
+
+    "common.yes": "ஆம்",
+    "common.no": "இல்லை",
+    "common.dontKnow": "தெரியவில்லை",
+    "common.continue": "அடுத்து",
+    "common.cancel": "ரத்து",
+    "common.copy": "நகலெடு",
+    "common.copied": "நகலெடுக்கப்பட்டது",
+    "common.listen": "கேள்",
+    "common.stop": "நிறுத்து",
+    "common.beta": "(பீட்டா)",
+    "common.close": "மூடு",
+    "common.save": "சேமி",
+
+    "tab.home": "முகப்பு",
+    "tab.check": "சரிபார்",
+    "tab.madad": "உதவி",
+    "tab.pause": "நிறுத்து",
+    "tab.more": "மேலும்",
+
+    "home.hero": "ஏதேனும் செய்தி வந்ததா?",
+    "home.heroLead": "பணமோ OTP ஓ கொடுப்பதற்கு முன் இங்கே சரிபாருங்கள்.",
+    "home.more": "வேறு ஏதாவது வேண்டுமா?",
+    "home.madad": "பணம் போய்விட்டதா?",
+    "home.madadLine": "முதல் ஒரு மணி நேரம், இங்கிருந்தே தொடங்குங்கள்",
+    "home.pause": "நிறுத்து",
+    "home.pauseLine": "ஏதாவது செய்வதற்கு முன் ஒரு நிமிடம்",
+    "home.traps": "மோசடியின் பொதுவான வழிகள்",
+    "home.trapsSub": "அவை எப்படி இருக்கும் எனப் பாருங்கள்",
+    "home.trapSub": "இது எப்படி இருக்கும் எனப் பாருங்கள்",
+    "home.trap1": "VIP குழுவுக்கு அழைப்பு",
+    "home.trap2": "OTP கேட்பது",
+    "home.trap3": "கட்டணம் கட்டினால்தான் பணம் வரும்",
+    "home.trap4": "செயலி நிறுவச் சொல்வது அல்லது திரையைப் பகிரச் சொல்வது",
+    "home.steps": "மூன்று படிகள்",
+    "home.step1": "செய்தியை ஒட்டுங்கள், பேசுங்கள் அல்லது புகைப்படம் அனுப்புங்கள்",
+    "home.step2": "முடிவையும் காரணங்களையும் பாருங்கள்",
+    "home.step3": "நிறுத்திவிட்டு முடிவு செய்யுங்கள். வேண்டுமானால் குடும்பத்திடம் சொல்லுங்கள்.",
+    "home.lastCheck": "கடைசிச் சரிபார்ப்பு",
+    "home.openCase": "உங்கள் வழக்கு திறந்திருக்கிறது",
+    "home.openCaseGo": "தொடரவும்",
+    "home.learn": "புரிந்துகொள்",
+    "home.family": "குடும்பம்",
+    "home.history": "முந்தைய சரிபார்ப்புகள்",
+    "home.historyShort": "முந்தைய சரிபார்ப்புகள்",
+    "home.tipOfDay": "இன்றைக்கு ஒரு விஷயம்",
+    "home.lateNight": "பெரிய முடிவுகள் காலையில் தெளிவாகத் தெரியும்",
+    "home.pauseOpen": "நிறுத்து திறக்கவும்",
+    "home.privacyLabel": "இந்த ஃபோனை விட்டு வெளியே போனது",
+    "home.privacyLine": "சரிபார்ப்பு இந்த ஃபோனிலேயே. கணக்கு இல்லை. ஆலோசனை இல்லை.",
+    "home.privacySee": "உங்கள் தரவு எங்கே போனது",
+    "home.sampleLink": "ஒரு மாதிரிச் செய்தியை முயலுங்கள்",
+    "home.installAdd": "சேர்",
+
+    "quick.placeholder": "செய்தியை இங்கே ஒட்டுங்கள்…",
+    "quick.check": "செய்தியைச் சரிபார்",
+    "quick.speak": "பேசி",
+    "quick.photo": "புகைப்படம்",
+    "quick.paste": "ஒட்டு",
+
+    "sample.banner": "இது ஒரு மாதிரிச் செய்தி",
+    "sample.own": "உங்கள் சொந்தச் செய்தியைச் சரிபாருங்கள்",
+
+    "check.title": "உங்களுக்கு என்ன வந்திருக்கிறது?",
+    "check.placeholder": "செய்தியை இங்கே ஒட்டுங்கள்",
+    "check.submit": "சரிபார்",
+    "check.clear": "அழி",
+
+    "state.HIGH_RISK.stamp": "அபாயம்",
+    "state.MULTIPLE_RED_FLAGS.stamp": "எச்சரிக்கை",
+    "state.SOME_CONCERNS.stamp": "கூர்ந்து பாருங்கள்",
+    "state.NO_STRONG_FLAGS.stamp": "வலுவானது எதுவும் இல்லை",
+    "state.NOT_ENOUGH_TO_GO_ON.stamp": "போதவில்லை",
+
+    "result.title": "முடிவு",
+    "result.whatNow": "இப்போது என்ன செய்வது",
+    "result.why": "ஏன்",
+
+    "privacy.onDevice": "சரிபார்ப்பு இந்த ஃபோனில் மட்டுமே நடக்கிறது",
+
+    "start.langTitle": "உங்கள் மொழியைத் தேர்ந்தெடுங்கள்",
+    "start.promisesTitle": "மூன்று வாக்குறுதிகள்",
+
+    "settings.title": "அமைப்புகள்",
+    "settings.language": "மொழி",
+    "settings.textSize": "எழுத்து அளவு",
+    "settings.theme": "தோற்றம்",
+  },
+};

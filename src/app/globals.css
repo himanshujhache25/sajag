@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+@import "./styles/base.css";
+@import "./styles/components.css";
+@import "./styles/screen.css";
+@import "./styles/home.css";
+@import "./styles/i18n.css";
+
+/* ============================================================================
+   Tailwind theme. It only exposes the semantic tokens from tokens.css, so an
+   off-scale colour or radius cannot be written by accident.
+
+   The `paper` / `nib` / `stamp` names are the old bahi-khata palette. They are
+   kept as aliases onto the new tokens so screens that have not been rebuilt
+   yet still render in the new colours instead of breaking, and they are
+   removed as each screen is converted.
+   ========================================================================== */
+
+@theme inline {
+  --color-desk: var(--desk);
+  --color-page: var(--page);
+  --color-panel: var(--panel);
+  --color-sunken: var(--sunken);
+  --color-calm: var(--calm);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+
+  --color-edge: var(--edge);
+  --color-rule: var(--rule);
+  --color-border: var(--border);
+
+  --color-action: var(--action);
+  --color-action-fg: var(--action-fg);
+  --color-action-tint: var(--action-tint);
+
+  --color-danger: var(--danger);
+  --color-danger-tint: var(--danger-tint);
+  --color-caution: var(--caution);
+  --color-caution-fill: var(--caution-fill);
+  --color-caution-tint: var(--caution-tint);
+  --color-ok: var(--ok);
+  --color-ok-tint: var(--ok-tint);
+
+  /* legacy aliases, retired screen by screen */
+  --color-paper: var(--page);
+  --color-paper-deep: var(--sunken);
+  --color-nib: var(--action);
+  --color-stamp: var(--danger);
+  --color-turmeric: var(--caution);
+  --color-turmeric-fill: var(--caution-fill);
+  --color-neem: var(--ok);
+  --color-margin: var(--danger);
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-ledger: var(--r-md);
+
+  --font-sans: var(--ui-sans);
+  --font-serif: var(--ui-serif);
+  --font-mono: var(--ui-mono);
+}

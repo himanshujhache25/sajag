@@ -1,0 +1,110 @@
+import type { Pack } from "../langs";
+import { teHelp } from "./te-help";
+import { teSignals } from "./te-signals";
+
+/* Telugu. Machine-assisted, awaiting a native read. */
+export const te: Pack = {
+  lang: "te",
+  needsReview: true,
+  strings: {
+    ...teSignals,
+    ...teHelp,
+    "app.tagline": "ఆగండి · పరిశీలించండి · అర్థం చేసుకోండి",
+    "app.disclaimer":
+      "మేము పెట్టుబడి సలహా ఇవ్వం. ఇది SANGYAN హ్యాకథాన్ నమూనా, SEBI లేదా NSDL అధికారిక యాప్ కాదు.",
+    "app.skipToContent": "ముఖ్య విషయానికి వెళ్లండి",
+
+    "nav.back": "వెనక్కి",
+    "nav.home": "హోమ్",
+    "nav.settings": "సెట్టింగ్‌లు",
+    "nav.about": "మా గురించి",
+    "nav.language": "భాష",
+
+    "common.yes": "అవును",
+    "common.no": "కాదు",
+    "common.dontKnow": "తెలియదు",
+    "common.continue": "తరువాత",
+    "common.cancel": "రద్దు",
+    "common.copy": "కాపీ చేయండి",
+    "common.copied": "కాపీ అయింది",
+    "common.listen": "వినండి",
+    "common.stop": "ఆపండి",
+    "common.beta": "(బీటా)",
+    "common.close": "మూసివేయి",
+    "common.save": "భద్రపరచు",
+
+    "tab.home": "హోమ్",
+    "tab.check": "పరిశీలించు",
+    "tab.madad": "సాయం",
+    "tab.pause": "ఆగండి",
+    "tab.more": "మరిన్ని",
+
+    "home.hero": "ఏదైనా సందేశం వచ్చిందా?",
+    "home.heroLead": "డబ్బు లేదా OTP ఇచ్చే ముందు ఇక్కడ పరిశీలించుకోండి.",
+    "home.more": "ఇంకేమైనా కావాలా?",
+    "home.madad": "డబ్బు పోయిందా?",
+    "home.madadLine": "మొదటి గంట, ఇక్కడే మొదలుపెట్టండి",
+    "home.pause": "ఆగండి",
+    "home.pauseLine": "ఏదైనా చేసే ముందు ఒక నిమిషం",
+    "home.traps": "మోసం చేసే సాధారణ పద్ధతులు",
+    "home.trapsSub": "అవి ఎలా ఉంటాయో చూడండి",
+    "home.trapSub": "ఇది ఎలా ఉంటుందో చూడండి",
+    "home.trap1": "VIP గ్రూప్‌కు ఆహ్వానం",
+    "home.trap2": "OTP అడగడం",
+    "home.trap3": "ఫీజు కడితేనే డబ్బు వస్తుంది",
+    "home.trap4": "యాప్ పెట్టమని లేదా స్క్రీన్ షేర్ చేయమని అడగడం",
+    "home.steps": "మూడు అడుగులు",
+    "home.step1": "సందేశాన్ని అతికించండి, మాట్లాడండి లేదా ఫోటో పంపండి",
+    "home.step2": "ఫలితాన్ని, కారణాలను చూడండి",
+    "home.step3": "ఆగి నిర్ణయించుకోండి. కావాలంటే ఇంట్లో వాళ్లకు చెప్పండి.",
+    "home.lastCheck": "చివరి పరిశీలన",
+    "home.openCase": "మీ కేసు తెరిచే ఉంది",
+    "home.openCaseGo": "కొనసాగించండి",
+    "home.learn": "అర్థం చేసుకోండి",
+    "home.family": "కుటుంబం",
+    "home.history": "పాత పరిశీలనలు",
+    "home.historyShort": "పాత పరిశీలనలు",
+    "home.tipOfDay": "ఈ రోజుకి ఒక విషయం",
+    "home.lateNight": "పెద్ద నిర్ణయాలు ఉదయం స్పష్టంగా కనిపిస్తాయి",
+    "home.pauseOpen": "ఆగండి తెరవండి",
+    "home.privacyLabel": "ఈ ఫోన్ నుంచి బయటకు వెళ్లింది",
+    "home.privacyLine": "పరిశీలన ఈ ఫోన్‌లోనే. ఖాతా లేదు. సలహా లేదు.",
+    "home.privacySee": "మీ సమాచారం ఎక్కడికి వెళ్లింది",
+    "home.sampleLink": "ఒక నమూనా సందేశం చూడండి",
+    "home.installAdd": "జోడించు",
+
+    "quick.placeholder": "సందేశాన్ని ఇక్కడ అతికించండి…",
+    "quick.check": "సందేశాన్ని పరిశీలించు",
+    "quick.speak": "మాట్లాడి",
+    "quick.photo": "ఫోటో",
+    "quick.paste": "అతికించు",
+
+    "sample.banner": "ఇది ఒక నమూనా సందేశం",
+    "sample.own": "మీ సొంత సందేశాన్ని పరిశీలించండి",
+
+    "check.title": "మీకు ఏమి వచ్చింది?",
+    "check.placeholder": "సందేశాన్ని ఇక్కడ అతికించండి",
+    "check.submit": "పరిశీలించు",
+    "check.clear": "తుడిచివేయి",
+
+    "state.HIGH_RISK.stamp": "ప్రమాదం",
+    "state.MULTIPLE_RED_FLAGS.stamp": "జాగ్రత్త",
+    "state.SOME_CONCERNS.stamp": "నిశితంగా చూడండి",
+    "state.NO_STRONG_FLAGS.stamp": "బలమైనదేమీ లేదు",
+    "state.NOT_ENOUGH_TO_GO_ON.stamp": "సరిపోలేదు",
+
+    "result.title": "ఫలితం",
+    "result.whatNow": "ఇప్పుడు ఏమి చేయాలి",
+    "result.why": "ఎందుకు",
+
+    "privacy.onDevice": "పరిశీలన ఈ ఫోన్‌లో మాత్రమే జరుగుతుంది",
+
+    "start.langTitle": "మీ భాషను ఎంచుకోండి",
+    "start.promisesTitle": "మూడు వాగ్దానాలు",
+
+    "settings.title": "సెట్టింగ్‌లు",
+    "settings.language": "భాష",
+    "settings.textSize": "అక్షరాల పరిమాణం",
+    "settings.theme": "రూపం",
+  },
+};

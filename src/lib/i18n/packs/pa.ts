@@ -1,0 +1,110 @@
+import type { Pack } from "../langs";
+import { paHelp } from "./pa-help";
+import { paSignals } from "./pa-signals";
+
+/* Punjabi (Gurmukhi). Machine-assisted, awaiting a native read. */
+export const pa: Pack = {
+  lang: "pa",
+  needsReview: true,
+  strings: {
+    ...paSignals,
+    ...paHelp,
+    "app.tagline": "ਰੁਕੋ · ਜਾਂਚੋ · ਸਮਝੋ",
+    "app.disclaimer":
+      "ਅਸੀਂ ਨਿਵੇਸ਼ ਦੀ ਸਲਾਹ ਨਹੀਂ ਦਿੰਦੇ। ਇਹ SANGYAN ਹੈਕਾਥੌਨ ਦਾ ਨਮੂਨਾ ਹੈ, SEBI ਜਾਂ NSDL ਦੀ ਸਰਕਾਰੀ ਐਪ ਨਹੀਂ।",
+    "app.skipToContent": "ਮੁੱਖ ਸਮੱਗਰੀ ਉੱਤੇ ਜਾਓ",
+
+    "nav.back": "ਪਿੱਛੇ",
+    "nav.home": "ਹੋਮ",
+    "nav.settings": "ਸੈਟਿੰਗਾਂ",
+    "nav.about": "ਸਾਡੇ ਬਾਰੇ",
+    "nav.language": "ਭਾਸ਼ਾ",
+
+    "common.yes": "ਹਾਂ",
+    "common.no": "ਨਹੀਂ",
+    "common.dontKnow": "ਪਤਾ ਨਹੀਂ",
+    "common.continue": "ਅੱਗੇ",
+    "common.cancel": "ਰੱਦ ਕਰੋ",
+    "common.copy": "ਕਾਪੀ ਕਰੋ",
+    "common.copied": "ਕਾਪੀ ਹੋ ਗਿਆ",
+    "common.listen": "ਸੁਣੋ",
+    "common.stop": "ਰੋਕੋ",
+    "common.beta": "(ਬੀਟਾ)",
+    "common.close": "ਬੰਦ ਕਰੋ",
+    "common.save": "ਸਾਂਭੋ",
+
+    "tab.home": "ਹੋਮ",
+    "tab.check": "ਜਾਂਚੋ",
+    "tab.madad": "ਮਦਦ",
+    "tab.pause": "ਰੁਕੋ",
+    "tab.more": "ਹੋਰ",
+
+    "home.hero": "ਕੋਈ ਸੁਨੇਹਾ ਆਇਆ ਹੈ?",
+    "home.heroLead": "ਪੈਸੇ ਜਾਂ OTP ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ ਇੱਥੇ ਜਾਂਚ ਲਵੋ।",
+    "home.more": "ਹੋਰ ਕੁਝ ਚਾਹੀਦਾ ਹੈ?",
+    "home.madad": "ਪੈਸੇ ਚਲੇ ਗਏ?",
+    "home.madadLine": "ਪਹਿਲਾ ਘੰਟਾ, ਇੱਥੋਂ ਹੀ ਸ਼ੁਰੂ ਕਰੋ",
+    "home.pause": "ਰੁਕੋ",
+    "home.pauseLine": "ਕੁਝ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਇੱਕ ਮਿੰਟ",
+    "home.traps": "ਠੱਗੀ ਦੇ ਆਮ ਤਰੀਕੇ",
+    "home.trapsSub": "ਵੇਖੋ ਇਹ ਕਿਵੇਂ ਦਿਸਦੇ ਹਨ",
+    "home.trapSub": "ਵੇਖੋ ਇਹ ਕਿਵੇਂ ਦਿਸਦਾ ਹੈ",
+    "home.trap1": "VIP ਗਰੁੱਪ ਦਾ ਸੱਦਾ",
+    "home.trap2": "OTP ਮੰਗਣਾ",
+    "home.trap3": "ਫੀਸ ਭਰੋ, ਤਾਂ ਹੀ ਪੈਸੇ ਮਿਲਣਗੇ",
+    "home.trap4": "ਐਪ ਪਾਉਣ ਜਾਂ ਸਕਰੀਨ ਸਾਂਝੀ ਕਰਨ ਲਈ ਕਹਿਣਾ",
+    "home.steps": "ਤਿੰਨ ਕਦਮ",
+    "home.step1": "ਸੁਨੇਹਾ ਚਿਪਕਾਓ, ਬੋਲੋ ਜਾਂ ਫੋਟੋ ਭੇਜੋ",
+    "home.step2": "ਨਤੀਜਾ ਤੇ ਕਾਰਨ ਵੇਖੋ",
+    "home.step3": "ਰੁਕ ਕੇ ਫੈਸਲਾ ਕਰੋ। ਚਾਹੋ ਤਾਂ ਪਰਿਵਾਰ ਨੂੰ ਦੱਸੋ।",
+    "home.lastCheck": "ਆਖ਼ਰੀ ਜਾਂਚ",
+    "home.openCase": "ਤੁਹਾਡਾ ਮਾਮਲਾ ਖੁੱਲ੍ਹਾ ਹੈ",
+    "home.openCaseGo": "ਜਾਰੀ ਰੱਖੋ",
+    "home.learn": "ਸਮਝੋ",
+    "home.family": "ਪਰਿਵਾਰ",
+    "home.history": "ਪੁਰਾਣੀਆਂ ਜਾਂਚਾਂ",
+    "home.historyShort": "ਪੁਰਾਣੀਆਂ ਜਾਂਚਾਂ",
+    "home.tipOfDay": "ਅੱਜ ਦੀ ਇੱਕ ਗੱਲ",
+    "home.lateNight": "ਵੱਡੇ ਫੈਸਲੇ ਸਵੇਰੇ ਸਾਫ਼ ਦਿਸਦੇ ਹਨ",
+    "home.pauseOpen": "ਰੁਕੋ ਖੋਲ੍ਹੋ",
+    "home.privacyLabel": "ਇਸ ਫੋਨ ਤੋਂ ਬਾਹਰ ਗਿਆ",
+    "home.privacyLine": "ਜਾਂਚ ਇਸੇ ਫੋਨ ਉੱਤੇ। ਕੋਈ ਖਾਤਾ ਨਹੀਂ। ਕੋਈ ਸਲਾਹ ਨਹੀਂ।",
+    "home.privacySee": "ਤੁਹਾਡਾ ਡਾਟਾ ਕਿੱਥੇ ਗਿਆ",
+    "home.sampleLink": "ਕੋਈ ਨਮੂਨਾ ਸੁਨੇਹਾ ਅਜ਼ਮਾਓ",
+    "home.installAdd": "ਜੋੜੋ",
+
+    "quick.placeholder": "ਸੁਨੇਹਾ ਇੱਥੇ ਚਿਪਕਾਓ…",
+    "quick.check": "ਸੁਨੇਹਾ ਜਾਂਚੋ",
+    "quick.speak": "ਬੋਲ ਕੇ",
+    "quick.photo": "ਫੋਟੋ",
+    "quick.paste": "ਚਿਪਕਾਓ",
+
+    "sample.banner": "ਇਹ ਇੱਕ ਨਮੂਨਾ ਸੁਨੇਹਾ ਹੈ",
+    "sample.own": "ਆਪਣਾ ਸੁਨੇਹਾ ਜਾਂਚੋ",
+
+    "check.title": "ਤੁਹਾਡੇ ਕੋਲ ਕੀ ਆਇਆ ਹੈ?",
+    "check.placeholder": "ਸੁਨੇਹਾ ਇੱਥੇ ਚਿਪਕਾਓ",
+    "check.submit": "ਜਾਂਚੋ",
+    "check.clear": "ਮਿਟਾਓ",
+
+    "state.HIGH_RISK.stamp": "ਖ਼ਤਰਾ",
+    "state.MULTIPLE_RED_FLAGS.stamp": "ਸਾਵਧਾਨ",
+    "state.SOME_CONCERNS.stamp": "ਧਿਆਨ ਨਾਲ ਵੇਖੋ",
+    "state.NO_STRONG_FLAGS.stamp": "ਪੱਕਾ ਕੁਝ ਨਹੀਂ ਮਿਲਿਆ",
+    "state.NOT_ENOUGH_TO_GO_ON.stamp": "ਕਾਫ਼ੀ ਨਹੀਂ",
+
+    "result.title": "ਨਤੀਜਾ",
+    "result.whatNow": "ਹੁਣ ਕੀ ਕਰਨਾ ਹੈ",
+    "result.why": "ਕਿਉਂ",
+
+    "privacy.onDevice": "ਜਾਂਚ ਸਿਰਫ਼ ਇਸੇ ਫੋਨ ਉੱਤੇ ਹੁੰਦੀ ਹੈ",
+
+    "start.langTitle": "ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ",
+    "start.promisesTitle": "ਤਿੰਨ ਵਾਅਦੇ",
+
+    "settings.title": "ਸੈਟਿੰਗਾਂ",
+    "settings.language": "ਭਾਸ਼ਾ",
+    "settings.textSize": "ਅੱਖਰਾਂ ਦਾ ਆਕਾਰ",
+    "settings.theme": "ਦਿੱਖ",
+  },
+};

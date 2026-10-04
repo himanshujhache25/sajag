@@ -1,0 +1,110 @@
+import type { Pack } from "../langs";
+import { knHelp } from "./kn-help";
+import { knSignals } from "./kn-signals";
+
+/* Kannada. Machine-assisted, awaiting a native read. */
+export const kn: Pack = {
+  lang: "kn",
+  needsReview: true,
+  strings: {
+    ...knSignals,
+    ...knHelp,
+    "app.tagline": "ನಿಲ್ಲಿ · ಪರಿಶೀಲಿಸಿ · ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ",
+    "app.disclaimer":
+      "ನಾವು ಹೂಡಿಕೆ ಸಲಹೆ ನೀಡುವುದಿಲ್ಲ. ಇದು SANGYAN ಹ್ಯಾಕಥಾನ್ ಮಾದರಿ, SEBI ಅಥವಾ NSDL ನ ಅಧಿಕೃತ ಆ್ಯಪ್ ಅಲ್ಲ.",
+    "app.skipToContent": "ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಹೋಗಿ",
+
+    "nav.back": "ಹಿಂದೆ",
+    "nav.home": "ಮುಖಪುಟ",
+    "nav.settings": "ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+    "nav.about": "ನಮ್ಮ ಬಗ್ಗೆ",
+    "nav.language": "ಭಾಷೆ",
+
+    "common.yes": "ಹೌದು",
+    "common.no": "ಇಲ್ಲ",
+    "common.dontKnow": "ಗೊತ್ತಿಲ್ಲ",
+    "common.continue": "ಮುಂದೆ",
+    "common.cancel": "ರದ್ದು",
+    "common.copy": "ನಕಲಿಸಿ",
+    "common.copied": "ನಕಲಾಯಿತು",
+    "common.listen": "ಕೇಳಿ",
+    "common.stop": "ನಿಲ್ಲಿಸಿ",
+    "common.beta": "(ಬೀಟಾ)",
+    "common.close": "ಮುಚ್ಚಿ",
+    "common.save": "ಉಳಿಸಿ",
+
+    "tab.home": "ಮುಖಪುಟ",
+    "tab.check": "ಪರಿಶೀಲಿಸಿ",
+    "tab.madad": "ಸಹಾಯ",
+    "tab.pause": "ನಿಲ್ಲಿ",
+    "tab.more": "ಇನ್ನಷ್ಟು",
+
+    "home.hero": "ಯಾವುದಾದರೂ ಸಂದೇಶ ಬಂದಿದೆಯೇ?",
+    "home.heroLead": "ಹಣ ಅಥವಾ OTP ಕೊಡುವ ಮೊದಲು ಇಲ್ಲಿ ಪರಿಶೀಲಿಸಿ.",
+    "home.more": "ಇನ್ನೇನಾದರೂ ಬೇಕೇ?",
+    "home.madad": "ಹಣ ಹೋಯಿತೇ?",
+    "home.madadLine": "ಮೊದಲ ಗಂಟೆ, ಇಲ್ಲಿಂದಲೇ ಶುರು ಮಾಡಿ",
+    "home.pause": "ನಿಲ್ಲಿ",
+    "home.pauseLine": "ಏನಾದರೂ ಮಾಡುವ ಮೊದಲು ಒಂದು ನಿಮಿಷ",
+    "home.traps": "ಮೋಸದ ಸಾಮಾನ್ಯ ದಾರಿಗಳು",
+    "home.trapsSub": "ಅವು ಹೇಗಿರುತ್ತವೆ ನೋಡಿ",
+    "home.trapSub": "ಇದು ಹೇಗಿರುತ್ತದೆ ನೋಡಿ",
+    "home.trap1": "VIP ಗುಂಪಿಗೆ ಆಹ್ವಾನ",
+    "home.trap2": "OTP ಕೇಳುವುದು",
+    "home.trap3": "ಶುಲ್ಕ ಕಟ್ಟಿದರೆ ಮಾತ್ರ ಹಣ ಸಿಗುತ್ತದೆ",
+    "home.trap4": "ಆ್ಯಪ್ ಹಾಕಲು ಅಥವಾ ಪರದೆ ಹಂಚಲು ಹೇಳುವುದು",
+    "home.steps": "ಮೂರು ಹೆಜ್ಜೆ",
+    "home.step1": "ಸಂದೇಶವನ್ನು ಅಂಟಿಸಿ, ಮಾತನಾಡಿ ಅಥವಾ ಫೋಟೋ ಕಳಿಸಿ",
+    "home.step2": "ಫಲಿತಾಂಶ ಮತ್ತು ಕಾರಣಗಳನ್ನು ನೋಡಿ",
+    "home.step3": "ನಿಂತು ನಿರ್ಧರಿಸಿ. ಬೇಕಿದ್ದರೆ ಮನೆಯವರಿಗೆ ತಿಳಿಸಿ.",
+    "home.lastCheck": "ಕೊನೆಯ ಪರಿಶೀಲನೆ",
+    "home.openCase": "ನಿಮ್ಮ ಪ್ರಕರಣ ತೆರೆದಿದೆ",
+    "home.openCaseGo": "ಮುಂದುವರಿಸಿ",
+    "home.learn": "ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ",
+    "home.family": "ಕುಟುಂಬ",
+    "home.history": "ಹಳೆಯ ಪರಿಶೀಲನೆಗಳು",
+    "home.historyShort": "ಹಳೆಯ ಪರಿಶೀಲನೆಗಳು",
+    "home.tipOfDay": "ಇಂದಿನ ಒಂದು ಮಾತು",
+    "home.lateNight": "ದೊಡ್ಡ ನಿರ್ಧಾರಗಳು ಬೆಳಿಗ್ಗೆ ಸ್ಪಷ್ಟವಾಗಿ ಕಾಣುತ್ತವೆ",
+    "home.pauseOpen": "ನಿಲ್ಲಿ ತೆರೆಯಿರಿ",
+    "home.privacyLabel": "ಈ ಫೋನಿನಿಂದ ಹೊರಗೆ ಹೋಗಿದ್ದು",
+    "home.privacyLine": "ಪರಿಶೀಲನೆ ಈ ಫೋನಿನಲ್ಲೇ. ಖಾತೆ ಇಲ್ಲ. ಸಲಹೆ ಇಲ್ಲ.",
+    "home.privacySee": "ನಿಮ್ಮ ಮಾಹಿತಿ ಎಲ್ಲಿಗೆ ಹೋಯಿತು",
+    "home.sampleLink": "ಒಂದು ಮಾದರಿ ಸಂದೇಶ ನೋಡಿ",
+    "home.installAdd": "ಸೇರಿಸಿ",
+
+    "quick.placeholder": "ಸಂದೇಶವನ್ನು ಇಲ್ಲಿ ಅಂಟಿಸಿ…",
+    "quick.check": "ಸಂದೇಶ ಪರಿಶೀಲಿಸಿ",
+    "quick.speak": "ಮಾತನಾಡಿ",
+    "quick.photo": "ಫೋಟೋ",
+    "quick.paste": "ಅಂಟಿಸಿ",
+
+    "sample.banner": "ಇದು ಒಂದು ಮಾದರಿ ಸಂದೇಶ",
+    "sample.own": "ನಿಮ್ಮದೇ ಸಂದೇಶ ಪರಿಶೀಲಿಸಿ",
+
+    "check.title": "ನಿಮಗೆ ಏನು ಬಂದಿದೆ?",
+    "check.placeholder": "ಸಂದೇಶವನ್ನು ಇಲ್ಲಿ ಅಂಟಿಸಿ",
+    "check.submit": "ಪರಿಶೀಲಿಸಿ",
+    "check.clear": "ಅಳಿಸಿ",
+
+    "state.HIGH_RISK.stamp": "ಅಪಾಯ",
+    "state.MULTIPLE_RED_FLAGS.stamp": "ಎಚ್ಚರ",
+    "state.SOME_CONCERNS.stamp": "ಸೂಕ್ಷ್ಮವಾಗಿ ನೋಡಿ",
+    "state.NO_STRONG_FLAGS.stamp": "ಗಟ್ಟಿಯಾದುದು ಸಿಗಲಿಲ್ಲ",
+    "state.NOT_ENOUGH_TO_GO_ON.stamp": "ಸಾಕಾಗಲಿಲ್ಲ",
+
+    "result.title": "ಫಲಿತಾಂಶ",
+    "result.whatNow": "ಈಗ ಏನು ಮಾಡಬೇಕು",
+    "result.why": "ಏಕೆ",
+
+    "privacy.onDevice": "ಪರಿಶೀಲನೆ ಈ ಫೋನಿನಲ್ಲಿ ಮಾತ್ರ ನಡೆಯುತ್ತದೆ",
+
+    "start.langTitle": "ನಿಮ್ಮ ಭಾಷೆ ಆರಿಸಿ",
+    "start.promisesTitle": "ಮೂರು ಭರವಸೆಗಳು",
+
+    "settings.title": "ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+    "settings.language": "ಭಾಷೆ",
+    "settings.textSize": "ಅಕ್ಷರದ ಗಾತ್ರ",
+    "settings.theme": "ನೋಟ",
+  },
+};
