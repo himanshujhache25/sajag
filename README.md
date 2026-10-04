@@ -156,6 +156,13 @@ environment variables at all the whole product works, because the check runs on
 the device and the two server routes answer `501`, which the app handles
 quietly.
 
+`npm install` also runs `scripts/ocr-assets.mjs`, which puts the on-device text
+recognition engine into `public/tesseract` — a worker, a WebAssembly core from
+`node_modules`, and twelve language files downloaded once. It is about 33 MB,
+which is why it is generated rather than committed. If it fails, the install
+still finishes and photo reading is the only thing that stops working; run
+`npm run ocr-assets` to try again.
+
 To enable the optional explain-only model layer, copy `.env.example` to `.env`
 and fill it in.
 

@@ -9,6 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "postinstall": "node scripts/ocr-assets.mjs",
+    "ocr-assets": "node scripts/ocr-assets.mjs",
     "lint": "eslint",
     "test": "vitest run",
     "e2e": "playwright test",

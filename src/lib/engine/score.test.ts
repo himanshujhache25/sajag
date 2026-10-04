@@ -132,3 +132,24 @@ describe("score", () => {
     expect(result.state).toBe("HIGH_RISK");
   });
 });
+
+describe("the stamp never contradicts the list under it", () => {
+  /* A message that threatens to block an account and says "transfer now"
+     fires one weak flag and scores about 0.15. The old banding stamped that
+     NOTHING STRONG FOUND while the screen underneath listed the flag it had
+     just found. The stamp is the part people read. */
+  it("never says nothing was found when a signal fired", () => {
+    const result = score({ ...EMPTY, signals: [sig("S20", "moderate", 0.15)] });
+    expect(result.p).toBeLessThan(0.2);
+    expect(result.state).toBe("SOME_CONCERNS");
+  });
+
+  it("still says nothing was found when nothing fired", () => {
+    expect(score(EMPTY).state).toBe("NO_STRONG_FLAGS");
+  });
+
+  it("does not let a positive alone raise the state", () => {
+    const result = score({ ...EMPTY, positives: [pos("P1", 0.3)] });
+    expect(result.state).toBe("NO_STRONG_FLAGS");
+  });
+});

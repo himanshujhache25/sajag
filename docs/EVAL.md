@@ -15,8 +15,8 @@ label \ state | NOT_ENOUGH_ | NO_STRONG_F | SOME_CONCER | MULTIPLE_RE | HIGH_RIS
 --------------|-------------|-------------|-------------|-------------|-------------|------------
 high          | 0           | 0           | 3           | 22          | 35          | 60         
 multiple      | 0           | 0           | 0           | 0           | 0           | 0          
-some          | 0           | 13          | 4           | 1           | 0           | 18         
-none          | 0           | 38          | 3           | 1           | 0           | 42         
+some          | 0           | 10          | 7           | 1           | 0           | 18         
+none          | 0           | 37          | 4           | 1           | 0           | 42         
 ```
 
 ## Targets
@@ -25,7 +25,7 @@ none          | 0           | 38          | 3           | 1           | 0       
 | --- | --- | --- | --- |
 | recall at MULTIPLE_RED_FLAGS or above, on high and multiple | 0.90 or more | 95.0% | yes |
 | false alarm at MULTIPLE_RED_FLAGS or above, on clean | 0.05 or less | 2.4% | yes |
-| false alarm at SOME_CONCERNS or above, on clean | 0.15 or less | 9.5% | yes |
+| false alarm at SOME_CONCERNS or above, on clean | 0.15 or less | 11.9% | yes |
 
 ## Golden messages
 
@@ -70,16 +70,14 @@ none          | 0           | 38          | 3           | 1           | 0       
 - `high` -> `MULTIPLE_RED_FLAGS` (gu): gujarati guarantee — "અમારા વીઆઈપી ગ્રુપમાં જોડાઓ, રોજ ચોક્કસ નફો, ગેરંટી સાથે"
 - `none` -> `MULTIPLE_RED_FLAGS` (en): education with negation — "Nobody can guarantee returns in the securities market. If someone prom…"
 - `none` -> `SOME_CONCERNS` (en): warning frame — "Remember that a trading bot promising daily profit is a known trap. Th…"
+- `none` -> `SOME_CONCERNS` (hi): family chat — "कल सुबह मंदिर चलना है, जल्दी उठ जाना।"
 - `some` -> `NO_STRONG_FLAGS` (en): selling but with disclosure — "Our advisory charges a fee of Rs 1999 per month for research reports. …"
-- `some` -> `NO_STRONG_FLAGS` (en): urgency in a mild context — "Join our free webinar this Sunday on how options work. Limited seats, …"
 - `none` -> `SOME_CONCERNS` (en): registered and matching — "We are a registered research analyst INH000111222 and publish weekly r…"
 - `some` -> `MULTIPLE_RED_FLAGS` (en): suspended registration in snapshot — "Our analyst registration number is INH000222333, subscribe for daily c…"
 - `some` -> `NO_STRONG_FLAGS` (hinglish): tip format — "DemoInfra ko 220 ke upar lijiye, target 240, stop loss 212, intraday k…"
 - `some` -> `NO_STRONG_FLAGS` (en): fake proof alone — "Our members made good returns last quarter. Screenshots of their state…"
-- `some` -> `NO_STRONG_FLAGS` (en): urgency alone — "Hurry, our early bird pricing for the trading course closes tonight at…"
 - `some` -> `NO_STRONG_FLAGS` (en): profit sharing — "We share profit with our clients: you keep seventy percent and we take…"
 - `some` -> `NO_STRONG_FLAGS` (hi): selling with disclosure — "हमारी सलाह सेवा का शुल्क 1500 रुपये महीना है, पिछला प्रदर्शन भविष्य की…"
-- `some` -> `NO_STRONG_FLAGS` (en): service call from a mobile — "Call 9876500011 for customer service regarding your trading account st…"
 - `some` -> `NO_STRONG_FLAGS` (en): superlatives — "We are the number one advisory in the country with the highest ever ac…"
 - `some` -> `NO_STRONG_FLAGS` (hinglish): urgency plus price — "Hamara naya plan sirf is hafte ke liye hai, course fee 4999, abhi book…"
 - `none` -> `SOME_CONCERNS` (en): registered portfolio manager — "Our portfolio manager registration INP000777888 is active. Portfolio m…"

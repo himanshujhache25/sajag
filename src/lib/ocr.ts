@@ -95,6 +95,15 @@ export async function readImage(
      Latin letters, and a model given only `tam` transliterates those into
      nonsense that the engine then cannot match against its lexicon. */
   const worker = await createWorker(traineddataFor(lang), undefined, {
+    /* Serve the engine from our own origin. Left to itself Tesseract pulls
+       the worker, the wasm core and each language file from a CDN, which the
+       Content-Security-Policy blocks outright — so photo reading failed every
+       time and blamed the photo for it. Serving the files ourselves also
+       means a CDN never learns the IP address of somebody checking a message.
+       `scripts/ocr-assets.mjs` puts them in place on install. */
+    workerPath: "/tesseract/worker.min.js",
+    corePath: "/tesseract/core",
+    langPath: "/tesseract/lang",
     logger: (message: { status: string; progress: number }) => {
       if (message.status === "recognizing text") onProgress(message.progress);
     },

@@ -68,10 +68,22 @@ export function score(input: ScoreInput): Score {
   /* Decide the state from the rounded p, so a value that displays as 0.20
      never sits one float below the threshold it is shown to have crossed. */
   const shown = round(p);
+  const banded = stateFor(shown, hardStop);
+
+  /* "Nothing strong found" has to mean nothing was found. A message that
+     threatens to block an account and tells somebody to transfer money at
+     once scores below 0.2 on its own, and used to come back stamped
+     NOTHING STRONG FOUND while the screen underneath listed the flag it had
+     just found. The stamp is the part people read, so it must not contradict
+     the list. One weak flag is a reason to look closer, not a clean bill. */
+  const state =
+    banded === "NO_STRONG_FLAGS" && input.signals.length > 0
+      ? "SOME_CONCERNS"
+      : banded;
 
   return {
     p: shown,
-    state: stateFor(shown, hardStop),
+    state,
     hardStop,
     rawP: round(rawP),
     positiveRelief: round(positiveRelief),

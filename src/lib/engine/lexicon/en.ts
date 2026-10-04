@@ -52,6 +52,40 @@ export const en: Lexicon = {
       "don't miss",
       "dont miss",
       "missing out",
+      /* Pressure that is not selling anything. Everything above this line is
+         sales language from an investment pitch — "seats left", "join now" —
+         which left the concept blind to the way a phishing message hurries
+         somebody: a deadline, a threat to an account, and an instruction to
+         pay or click at once. A real message from a bank or a courier does
+         not usually talk like this either. */
+      "immediately",
+      "urgently",
+      "right now",
+      "right away",
+      "at once",
+      "without delay",
+      "within 24 hours",
+      "within 2 hours",
+      "within one hour",
+      "within an hour",
+      "expire today",
+      "expires today",
+      "will expire",
+      "about to expire",
+      "will be blocked",
+      "will be suspended",
+      "will be deactivated",
+      "account will be closed",
+      "final notice",
+      "last warning",
+      "immediate action",
+      "act fast",
+      "pay now",
+      "transfer now",
+      "send now",
+      "click now",
+      "update now",
+      "verify now",
     ],
     VIP_GROUP: [
       "vip group",

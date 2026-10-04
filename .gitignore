@@ -48,6 +48,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# The on-device OCR engine: worker, wasm core and language data, about 33 MB.
+# Copied out of node_modules and downloaded by scripts/ocr-assets.mjs on
+# install, so it is generated rather than committed.
+/public/tesseract/
+
 # Scratch files written while debugging: command output redirected out of the
 # way, and one-off probe scripts. None of it belongs in a commit.
 .t.txt

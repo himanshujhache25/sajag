@@ -48,6 +48,20 @@ export const hinglish: Lexicon = {
       "akhri mauka",
       "offer khatam",
       "der mat kijiye",
+      /* The same gap as the English list: pressure that threatens rather
+         than sells. */
+      "abhi ke abhi",
+      "turant kijiye",
+      "turant karo",
+      "24 ghante me",
+      "band ho jayega",
+      "block ho jayega",
+      "bandh ho jayega",
+      "abhi bhejo",
+      "abhi bhej dijiye",
+      "abhi pay karo",
+      "akhri chetavni",
+      "aakhri chetavni",
     ],
     VIP_GROUP: [
       "vip group",

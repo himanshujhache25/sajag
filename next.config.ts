@@ -4,12 +4,18 @@ import type { NextConfig } from "next";
    it too: the App Router streams the page as a series of inline bootstrap
    scripts, and without them nothing hydrates and no button works. We never
    put user text into HTML — the message is painted with React nodes — so the
-   usual injection route is closed. Both compromises are in docs/DECISIONS.md. */
+   usual injection route is closed.
+
+   'wasm-unsafe-eval' is needed by the on-device OCR engine, which compiles a
+   WebAssembly module in its worker. It permits wasm compilation and nothing
+   else; it does not bring back eval() for JavaScript. The engine itself is
+   served from our own origin, so no CDN is allowed here.
+   All three compromises are in docs/DECISIONS.md. */
 const dev = process.env.NODE_ENV === "development";
 
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${dev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'${dev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",

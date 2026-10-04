@@ -526,3 +526,84 @@ failures, because a QA sheet returned with nothing on it has not been run. The
 last section asks the only question that really matters — whether a person
 over fifty reads the "this is not proof of safety" line or stops at the colour
 of the stamp.
+
+## Photo reading was broken in every production build
+
+The on-device OCR engine fetches three things at runtime: a worker script, a
+WebAssembly core, and one language file per language. Left to itself,
+Tesseract fetches all three from a public CDN. Our Content-Security-Policy
+allows `script-src 'self'` and `connect-src 'self'`, so the browser refused
+the request, the worker failed to start, and the `catch` in the composer ran:
+
+> The picture was not read clearly. Paste the message or take it again.
+
+That sentence blamed the person's photograph for a mistake in the config, and
+sent them off to retake a picture that could never have worked. It had
+presumably never worked in a production build. Nothing caught it, because the
+photo path had no end-to-end test — only a unit test of the image preparation,
+which passes happily without the engine ever running.
+
+Two ways out. Allow the CDN in the CSP, or serve the engine ourselves. We
+serve it ourselves, for a reason beyond the CSP: a CDN request would hand a
+third party the IP address of somebody who is in the middle of checking a
+message they are frightened of. The privacy table promises that nothing leaves
+the phone by default, and an asset fetch to an outside host is a hole in that
+promise even though it carries no message text.
+
+`scripts/ocr-assets.mjs` now copies the worker and the wasm core out of
+`node_modules` and downloads the twelve language files, into
+`public/tesseract`. It runs on `postinstall`. The result is about 33 MB, so it
+is generated rather than committed, and a failure to build it only warns —
+an install that cannot finish would be a worse outcome than an app that tells
+somebody to paste their message instead.
+
+`'wasm-unsafe-eval'` was added to `script-src`, because compiling a wasm
+module needs it. It permits wasm compilation only and does not restore
+`eval()` for JavaScript.
+
+**The lesson:** the unit test covered `prepareImage`, which is the part that
+needed no network, and stopped exactly where the risk started. A feature with
+a `catch` that explains the failure in friendly words can stay broken for a
+long time, because the friendly words look like handling rather than a bug.
+`e2e/j7-photo.spec.ts` now draws a real image, reads it, and asserts that real
+words come out and that nothing was fetched from another host.
+
+## "Nothing strong found" on a message that was obviously a scam
+
+Reported from use: the checker kept returning NOTHING STRONG FOUND. The engine
+was right about the messages it was built for — the golden set, the Hindi and
+Hinglish investment pitches, all still scored correctly — so the fault was at
+the edges, and there were two of them.
+
+**The lexicon only spoke the language of a sales pitch.** The URGENCY concept
+listed "seats left", "join now", "offer ends", "last chance". Every one of
+those belongs to somebody selling a trading group. None of them is how a
+phishing message hurries a person. "Your KYC will expire today, update
+immediately or your account will be blocked" produced *no hits at all*. The
+same for "transfer now", "within 24 hours", "final notice". The list was
+written while thinking about one kind of scammer and it had the vocabulary of
+exactly that one. Generic pressure terms are now in the English, Hinglish and
+Hindi lists.
+
+**The stamp contradicted the screen under it.** Even once a flag fired, one
+weak flag scores about 0.15, which falls below the 0.2 band, so the verdict
+came back stamped NOTHING STRONG FOUND while the page underneath listed the
+flag it had just found. The stamp is the part people read; the list is the
+part they read afterwards, if at all. A stamp that says nothing was found,
+on a screen that then shows something, is worse than either alone. `score()`
+now floors the state at SOME_CONCERNS whenever any signal fired. NO_STRONG_FLAGS
+once again means what it says: nothing at all.
+
+The cost, measured rather than assumed: false alarms on clean messages went
+from 9.5% to 11.9%, still inside the 15% budget. The gain was three messages
+labelled "some concerns" in the corpus that had been coming back clean. One
+extra clean message now reads LOOK CLOSER. For a product whose whole purpose
+is to make somebody pause before sending money, that is the right direction
+to be wrong in.
+
+**Still out of scope, and worth stating:** Sajag knows investment fraud. A
+parcel-customs demand or a lottery-fee message can still come back with
+nothing, because nothing in the lexicon describes them. The verdict line
+already says "no big danger showed up, but that is not proof of safety", and
+that line is now carrying real weight. Naming those families properly is a
+piece of work, not a tweak.
